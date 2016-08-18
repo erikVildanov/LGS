@@ -13,6 +13,10 @@
 		8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426DD1D6613CF002D3CEB /* LGS.xcdatamodeld */; };
 		8B1426E11D6613CF002D3CEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1426E01D6613CF002D3CEB /* Assets.xcassets */; };
 		8B1426E41D6613CF002D3CEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1426E21D6613CF002D3CEB /* LaunchScreen.storyboard */; };
+		8B1426F41D661646002D3CEB /* Corporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426EC1D661646002D3CEB /* Corporate.swift */; };
+		8B1426F61D661646002D3CEB /* Bookkeeping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426EE1D661646002D3CEB /* Bookkeeping.swift */; };
+		8B1426F81D661646002D3CEB /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426F01D661646002D3CEB /* Leadership.swift */; };
+		8B1426FA1D661646002D3CEB /* CoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426F21D661646002D3CEB /* CoWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8B1426E01D6613CF002D3CEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1426E31D6613CF002D3CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1426E51D6613CF002D3CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1426EC1D661646002D3CEB /* Corporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Corporate.swift; path = Model/Corporate.swift; sourceTree = "<group>"; };
+		8B1426EE1D661646002D3CEB /* Bookkeeping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookkeeping.swift; path = Model/Bookkeeping.swift; sourceTree = "<group>"; };
+		8B1426F01D661646002D3CEB /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Leadership.swift; path = Model/Leadership.swift; sourceTree = "<group>"; };
+		8B1426F21D661646002D3CEB /* CoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoWorker.swift; path = Model/CoWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		8B1426D51D6613CF002D3CEB /* LGS */ = {
 			isa = PBXGroup;
 			children = (
+				8B1426FB1D66164E002D3CEB /* Model */,
 				8B1426D61D6613CF002D3CEB /* AppDelegate.swift */,
 				8B1426D81D6613CF002D3CEB /* ViewController.swift */,
 				8B1426DA1D6613CF002D3CEB /* Main.storyboard */,
@@ -65,6 +74,25 @@
 				8B1426DD1D6613CF002D3CEB /* LGS.xcdatamodeld */,
 			);
 			path = LGS;
+			sourceTree = "<group>";
+		};
+		8B1426FB1D66164E002D3CEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B1426FC1D6616A3002D3CEB /* Employees */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8B1426FC1D6616A3002D3CEB /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				8B1426EC1D661646002D3CEB /* Corporate.swift */,
+				8B1426EE1D661646002D3CEB /* Bookkeeping.swift */,
+				8B1426F01D661646002D3CEB /* Leadership.swift */,
+				8B1426F21D661646002D3CEB /* CoWorker.swift */,
+			);
+			name = Employees;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1426FA1D661646002D3CEB /* CoWorker.swift in Sources */,
 				8B1426D91D6613CF002D3CEB /* ViewController.swift in Sources */,
+				8B1426F41D661646002D3CEB /* Corporate.swift in Sources */,
+				8B1426F81D661646002D3CEB /* Leadership.swift in Sources */,
+				8B1426F61D661646002D3CEB /* Bookkeeping.swift in Sources */,
 				8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */,
 				8B1426D71D6613CF002D3CEB /* AppDelegate.swift in Sources */,
 			);

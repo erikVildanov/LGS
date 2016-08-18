@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
+    <entity name="Bookkeeping" representedClassName=".Bookkeeping" parentEntity="CoWorker" syncable="YES">
+        <attribute name="bookkeepingType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Corporate" representedClassName=".Corporate" isAbstract="YES" syncable="YES">
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="salary" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="CoWorker" representedClassName=".CoWorker" isAbstract="YES" parentEntity="Corporate" syncable="YES">
+        <attribute name="lunchTime" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="seatNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Leadership" representedClassName=".Leadership" parentEntity="Corporate" syncable="YES">
+        <attribute name="businessHours" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bookkeeping" positionX="-180" positionY="48" width="128" height="60"/>
+        <element name="Leadership" positionX="-317" positionY="-72" width="128" height="60"/>
+        <element name="CoWorker" positionX="-45" positionY="-81" width="128" height="75"/>
+        <element name="Corporate" positionX="-200" positionY="-183" width="128" height="75"/>
+    </elements>
 </model>
