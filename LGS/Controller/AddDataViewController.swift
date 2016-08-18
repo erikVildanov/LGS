@@ -187,6 +187,13 @@ class AddDataViewController: UIViewController {
             return
         }
         
+        self.fullName.text = ""
+        self.salary.text = ""
+        self.businessHours.text = ""
+        self.seatNumber.text = ""
+        self.lunchTime.text = ""
+        self.bookkeepingType.text = ""
+        
     }
     
 }

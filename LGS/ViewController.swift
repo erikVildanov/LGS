@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     }
     
     func addNewItem(){
-        let addFormViewController = AddFormViewController()
+        let addFormViewController = AddDataViewController()
         self.navigationController?.pushViewController(addFormViewController, animated: true)
     }
 
