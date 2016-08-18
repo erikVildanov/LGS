@@ -17,6 +17,7 @@
 		8B1426F61D661646002D3CEB /* Bookkeeping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426EE1D661646002D3CEB /* Bookkeeping.swift */; };
 		8B1426F81D661646002D3CEB /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426F01D661646002D3CEB /* Leadership.swift */; };
 		8B1426FA1D661646002D3CEB /* CoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426F21D661646002D3CEB /* CoWorker.swift */; };
+		8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427001D661786002D3CEB /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8B1426EE1D661646002D3CEB /* Bookkeeping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookkeeping.swift; path = Model/Bookkeeping.swift; sourceTree = "<group>"; };
 		8B1426F01D661646002D3CEB /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Leadership.swift; path = Model/Leadership.swift; sourceTree = "<group>"; };
 		8B1426F21D661646002D3CEB /* CoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoWorker.swift; path = Model/CoWorker.swift; sourceTree = "<group>"; };
+		8B1427001D661786002D3CEB /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = View/TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				8B1426FB1D66164E002D3CEB /* Model */,
+				8B1426FD1D66171E002D3CEB /* View */,
+				8B1426FE1D661722002D3CEB /* Controller */,
+				8B1426FF1D66172C002D3CEB /* DataSource */,
 				8B1426D61D6613CF002D3CEB /* AppDelegate.swift */,
-				8B1426D81D6613CF002D3CEB /* ViewController.swift */,
 				8B1426DA1D6613CF002D3CEB /* Main.storyboard */,
 				8B1426E01D6613CF002D3CEB /* Assets.xcassets */,
 				8B1426E21D6613CF002D3CEB /* LaunchScreen.storyboard */,
@@ -93,6 +97,29 @@
 				8B1426F21D661646002D3CEB /* CoWorker.swift */,
 			);
 			name = Employees;
+			sourceTree = "<group>";
+		};
+		8B1426FD1D66171E002D3CEB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B1427001D661786002D3CEB /* TableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8B1426FE1D661722002D3CEB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B1426D81D6613CF002D3CEB /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8B1426FF1D66172C002D3CEB /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1426FA1D661646002D3CEB /* CoWorker.swift in Sources */,
+				8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */,
 				8B1426D91D6613CF002D3CEB /* ViewController.swift in Sources */,
 				8B1426F41D661646002D3CEB /* Corporate.swift in Sources */,
 				8B1426F81D661646002D3CEB /* Leadership.swift in Sources */,
