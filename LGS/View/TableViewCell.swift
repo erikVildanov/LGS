@@ -21,8 +21,7 @@ class TableViewCell: UITableViewCell {
         information.translatesAutoresizingMaskIntoConstraints = false
         iconImage.contentMode = .ScaleAspectFit
         
-        information.backgroundColor = UIColor.yellowColor()
-        
+        backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         information.lineBreakMode = .ByWordWrapping
         information.numberOfLines = 0
         
@@ -33,10 +32,12 @@ class TableViewCell: UITableViewCell {
             "iconImage" : iconImage,
             "information" : information
         ]
-        
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-3-[iconImage(100)]-8-[information]-3-|", options: [], metrics: nil, views: viewsDict))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-3-[iconImage(100)]", options: [], metrics: nil, views: viewsDict))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-3-[iconImage(100)]-8-[information]-3-|", options: [], metrics: nil, views: viewsDict))
+        iconImage.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor, constant: 8).active = true
+        iconImage.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor).active = true
+        iconImage.widthAnchor.constraintEqualToAnchor(nil, constant: 100).active = true
+        iconImage.heightAnchor.constraintEqualToAnchor(nil, constant: 100).active = true
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[iconImage]-3-[information]-3-|", options: [], metrics: nil, views: viewsDict))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-3-[information(>=100)]-3-|", options: [], metrics: nil, views: viewsDict))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,7 +59,5 @@ class TableViewCell: UITableViewCell {
         iconImage.image = nil
         information.text = nil
     }
-    
-
 
 }

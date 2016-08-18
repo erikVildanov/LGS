@@ -20,6 +20,8 @@
 		8B1427311D66283B002D3CEB /* CoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427291D66283B002D3CEB /* CoWorker.swift */; };
 		8B1427331D66283B002D3CEB /* Corporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14272B1D66283B002D3CEB /* Corporate.swift */; };
 		8B1427351D66283B002D3CEB /* Bookkeeping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14272D1D66283B002D3CEB /* Bookkeeping.swift */; };
+		8B8D44371D6660D3001BEAEC /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */; };
+		8B8D44391D6670FC001BEAEC /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D44381D6670FC001BEAEC /* AddEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		8B1427291D66283B002D3CEB /* CoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoWorker.swift; sourceTree = "<group>"; };
 		8B14272B1D66283B002D3CEB /* Corporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corporate.swift; sourceTree = "<group>"; };
 		8B14272D1D66283B002D3CEB /* Bookkeeping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookkeeping.swift; sourceTree = "<group>"; };
+		8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDataViewController.swift; sourceTree = "<group>"; };
+		8B8D44381D6670FC001BEAEC /* AddEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				8B1427001D661786002D3CEB /* TableViewCell.swift */,
+				8B8D44381D6670FC001BEAEC /* AddEditView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			children = (
 				8B1426D81D6613CF002D3CEB /* ViewController.swift */,
 				8B1427041D66198D002D3CEB /* AddDataViewController.swift */,
+				8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,8 +209,10 @@
 				8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */,
 				8B1427331D66283B002D3CEB /* Corporate.swift in Sources */,
 				8B1427351D66283B002D3CEB /* Bookkeeping.swift in Sources */,
+				8B8D44371D6660D3001BEAEC /* EditDataViewController.swift in Sources */,
 				8B1426D91D6613CF002D3CEB /* ViewController.swift in Sources */,
 				8B1427051D66198D002D3CEB /* AddDataViewController.swift in Sources */,
+				8B8D44391D6670FC001BEAEC /* AddEditView.swift in Sources */,
 				8B14272F1D66283B002D3CEB /* Leadership.swift in Sources */,
 				8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */,
 				8B1427311D66283B002D3CEB /* CoWorker.swift in Sources */,
@@ -359,6 +367,7 @@
 				8B1426EA1D6613CF002D3CEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

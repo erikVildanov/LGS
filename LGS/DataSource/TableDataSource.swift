@@ -42,7 +42,7 @@ class TableDataSource: NSObject ,UITableViewDataSource {
     }
     
     func makeAttributedString(title title: String, subtitle: String) -> NSAttributedString {
-        let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.purpleColor()]
+        let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.blackColor()]
         let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
         
         let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
@@ -89,22 +89,22 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         cell.iconImage.image = UIImage(named: "avatar")
         
         if indexPath.section == 0 {
-            cell.information.text = makeAttributedString(title: leadership[indexPath.row].fullName!, subtitle: "Часы приема: \(leadership[indexPath.row].businessHours!)\n Зарплата: \(String(leadership[indexPath.row].salary!))")
+            cell.information.attributedText = makeAttributedString(title: leadership[indexPath.row].fullName!, subtitle: "Часы приема: \(leadership[indexPath.row].businessHours!)\n Зарплата: \(String(leadership[indexPath.row].salary!))")
         }
         
         if indexPath.section == 1 {
-            cell.information.text = makeAttributedString(title: coWorker[indexPath.row].fullName!, subtitle: "Обед: \(coWorker[indexPath.row].lunchTime!)\n Номер рабочего места: \(coWorker[indexPath.row].seatNumber!)\n Зарплата: \(coWorker[indexPath.row].salary!)")
+            cell.information.attributedText = makeAttributedString(title: coWorker[indexPath.row].fullName!, subtitle: "Обед: \(coWorker[indexPath.row].lunchTime!)\n Номер рабочего места: \(coWorker[indexPath.row].seatNumber!)\n Зарплата: \(coWorker[indexPath.row].salary!)")
         }
         
         if indexPath.section == 2 {
             var type = String()
-            if ((bookkeeping[indexPath.row].bookkeepingType?.boolValue) != nil) {
+            if bookkeeping[indexPath.row].bookkeepingType == 0 {
                 type = "начисление зарплаты"
             } else {
                 type = "учет материалов"
             }
             
-            cell.information.text = makeAttributedString(title: bookkeeping[indexPath.row].fullName!, subtitle: "Обед: \(bookkeeping[indexPath.row].lunchTime!)\n Номер рабочего места: \(bookkeeping[indexPath.row].seatNumber!)\n Зарплата: \(bookkeeping[indexPath.row].salary!)\n Тип бухгалтера: \(type)")
+            cell.information.attributedText = makeAttributedString(title: bookkeeping[indexPath.row].fullName!, subtitle: "Обед: \(bookkeeping[indexPath.row].lunchTime!)\n Номер рабочего места: \(bookkeeping[indexPath.row].seatNumber!)\n Зарплата: \(bookkeeping[indexPath.row].salary!)\n Тип бухгалтера: \(type)")
         }
         return cell
     }
@@ -163,11 +163,32 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

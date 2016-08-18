@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate {
 
     var tableView = UITableView()
     var tableData = TableDataSource()
@@ -17,11 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 109
         tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.setNeedsLayout()
-        //tableView.layoutIfNeeded()
-        tableView.layoutSubviews()
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = tableData
+        tableView.delegate = self
         self.view.addSubview(tableView)
         setupConstraints()
         createEditButton()
@@ -63,6 +61,19 @@ class ViewController: UIViewController {
         let addFormViewController = AddDataViewController()
         self.navigationController?.pushViewController(addFormViewController, animated: true)
     }
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var addFormViewController = EditDataViewController()
+        if indexPath.section == 0 {
+            addFormViewController = EditDataViewController(leadership: self.tableData.leadership[indexPath.row])
+        }
+        if indexPath.section == 1 {
+            addFormViewController = EditDataViewController(coWorker: self.tableData.coWorker[indexPath.row])
+        }
+        if indexPath.section == 2 {
+            addFormViewController = EditDataViewController(bookkeeping: self.tableData.bookkeeping[indexPath.row])
+        }
+        self.navigationController?.pushViewController(addFormViewController, animated: true)
+    }
 }
 
