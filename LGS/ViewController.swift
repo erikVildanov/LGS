@@ -11,12 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
     var tableView = UITableView()
-    let tableData = TableDataSource()
+    var tableData = TableDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 109
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44
+        //tableView.setNeedsLayout()
+        //tableView.layoutIfNeeded()
+        tableView.layoutSubviews()
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = tableData
         self.view.addSubview(tableView)
@@ -60,7 +63,6 @@ class ViewController: UIViewController {
         let addFormViewController = AddDataViewController()
         self.navigationController?.pushViewController(addFormViewController, animated: true)
     }
-
 
 }
 

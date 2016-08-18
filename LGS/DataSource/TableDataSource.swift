@@ -41,6 +41,18 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         
     }
     
+    func makeAttributedString(title title: String, subtitle: String) -> NSAttributedString {
+        let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.purpleColor()]
+        let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
+        
+        let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
+        let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
+        
+        titleString.appendAttributedString(subtitleString)
+        
+        return titleString
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 3
@@ -77,18 +89,22 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         cell.iconImage.image = UIImage(named: "avatar")
         
         if indexPath.section == 0 {
-            cell.itemName.text = leadership[indexPath.row].fullName
-            cell.information.text = "\(leadership[indexPath.row].businessHours) \(leadership[indexPath.row].salary)"
+            cell.information.text = makeAttributedString(title: leadership[indexPath.row].fullName!, subtitle: "Часы приема: \(leadership[indexPath.row].businessHours!)\n Зарплата: \(String(leadership[indexPath.row].salary!))")
         }
         
         if indexPath.section == 1 {
-            cell.itemName.text = coWorker[indexPath.row].fullName
-            cell.information.text = "\(coWorker[indexPath.row].lunchTime) \(coWorker[indexPath.row].seatNumber) \(coWorker[indexPath.row].salary)"
+            cell.information.text = makeAttributedString(title: coWorker[indexPath.row].fullName!, subtitle: "Обед: \(coWorker[indexPath.row].lunchTime!)\n Номер рабочего места: \(coWorker[indexPath.row].seatNumber!)\n Зарплата: \(coWorker[indexPath.row].salary!)")
         }
         
         if indexPath.section == 2 {
-            cell.itemName.text = bookkeeping[indexPath.row].fullName
-            cell.information.text = "\(bookkeeping[indexPath.row].lunchTime) \(bookkeeping[indexPath.row].seatNumber) \(bookkeeping[indexPath.row].seatNumber) \(bookkeeping[indexPath.row].bookkeepingType)"
+            var type = String()
+            if ((bookkeeping[indexPath.row].bookkeepingType?.boolValue) != nil) {
+                type = "начисление зарплаты"
+            } else {
+                type = "учет материалов"
+            }
+            
+            cell.information.text = makeAttributedString(title: bookkeeping[indexPath.row].fullName!, subtitle: "Обед: \(bookkeeping[indexPath.row].lunchTime!)\n Номер рабочего места: \(bookkeeping[indexPath.row].seatNumber!)\n Зарплата: \(bookkeeping[indexPath.row].salary!)\n Тип бухгалтера: \(type)")
         }
         return cell
     }
@@ -99,18 +115,33 @@ class TableDataSource: NSObject ,UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        
+        let managerObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+        
+        switch editingStyle {
+        case .Delete:
             if indexPath.section == 0 {
+                managerObjectContext!.deleteObject(leadership[indexPath.row] )
                 leadership.removeAtIndex(indexPath.row)
             }
             if indexPath.section == 1 {
+                managerObjectContext!.deleteObject(coWorker[indexPath.row] )
                 coWorker.removeAtIndex(indexPath.row)
             }
             if indexPath.section == 2 {
+                managerObjectContext!.deleteObject(bookkeeping[indexPath.row] )
                 bookkeeping.removeAtIndex(indexPath.row)
             }
-            tableView.reloadData()
+            do {
+                try managerObjectContext!.save()
+            } catch {
+                print(error)
+            }
+        default:
+            return
         }
+        
+        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
@@ -132,5 +163,11 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         tableView.reloadData()
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }

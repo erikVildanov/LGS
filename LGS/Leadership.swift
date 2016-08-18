@@ -11,6 +11,5 @@ import CoreData
 
 
 class Leadership: Corporate {
-
-@NSManaged var businessHours: NSNumber?
+    @NSManaged var businessHours: String?
 }

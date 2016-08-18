@@ -11,7 +11,6 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     var iconImage = UIImageView()
-    var itemName = UILabel()
     var information = UILabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -19,29 +18,24 @@ class TableViewCell: UITableViewCell {
         selectionStyle = .None
         
         iconImage.translatesAutoresizingMaskIntoConstraints = false
-        itemName.translatesAutoresizingMaskIntoConstraints = false
         information.translatesAutoresizingMaskIntoConstraints = false
         iconImage.contentMode = .ScaleAspectFit
         
-        itemName.backgroundColor = UIColor.redColor()
         information.backgroundColor = UIColor.yellowColor()
         
         information.lineBreakMode = .ByWordWrapping
         information.numberOfLines = 0
         
         contentView.addSubview(iconImage)
-        contentView.addSubview(itemName)
         contentView.addSubview(information)
         
         let viewsDict = [
             "iconImage" : iconImage,
-            "itemName" : itemName,
             "information" : information
         ]
         
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-3-[iconImage(100)]-8-[itemName]-3-|", options: [], metrics: nil, views: viewsDict))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-3-[iconImage(100)]-3-|", options: [], metrics: nil, views: viewsDict))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-3-[itemName]-8-[information]-3-|", options: [], metrics: nil, views: viewsDict))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-3-[iconImage(100)]-8-[information]-3-|", options: [], metrics: nil, views: viewsDict))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-3-[iconImage(100)]", options: [], metrics: nil, views: viewsDict))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-3-[iconImage(100)]-8-[information]-3-|", options: [], metrics: nil, views: viewsDict))
     }
     
@@ -62,7 +56,6 @@ class TableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         iconImage.image = nil
-        itemName.text = nil
         information.text = nil
     }
     

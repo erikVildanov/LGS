@@ -17,8 +17,8 @@ class AddDataViewController: UIViewController {
     private var businessHours = UITextField()
     private var seatNumber = UITextField()
     private var lunchTime = UITextField()
-    private var bookkeepingType = UITextField()
-    private var index = 0
+    private var bookkeepingType = UISegmentedControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
@@ -26,6 +26,7 @@ class AddDataViewController: UIViewController {
         initializeSegmentedControll()
         initializeCorporateViews()
         setupLeadershipView()
+        initializeKeyboardType()
         let saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: #selector(AddDataViewController.saveData))
         
         self.navigationItem.rightBarButtonItem = saveButton
@@ -37,6 +38,13 @@ class AddDataViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func initializeKeyboardType(){
+        fullName.keyboardType = .Default
+        salary.keyboardType = .NumbersAndPunctuation
+        businessHours.keyboardType = .NumbersAndPunctuation
+        seatNumber.keyboardType = .NumbersAndPunctuation
+        lunchTime.keyboardType = .NumbersAndPunctuation
+    }
     
     private func initializeSegmentedControll(){
         let items = ["Руководство","Сотрудник","Бухгалтер"]
@@ -46,7 +54,7 @@ class AddDataViewController: UIViewController {
         customSC.translatesAutoresizingMaskIntoConstraints = false
         customSC.backgroundColor = UIColor.blackColor()
         customSC.tintColor = UIColor.yellowColor()
-        customSC.addTarget(self, action: #selector(AddDataViewController.changeColor(_:)), forControlEvents: .ValueChanged)
+        customSC.addTarget(self, action: #selector(AddDataViewController.changeEmployees(_:)), forControlEvents: .ValueChanged)
         view.addSubview(customSC)
         let viewsDict = ["customSC" : customSC]
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[customSC]-10-|", options: [], metrics: nil, views: viewsDict))
@@ -56,6 +64,7 @@ class AddDataViewController: UIViewController {
     private func initializeCorporateViews(){
         fullName.translatesAutoresizingMaskIntoConstraints = false
         salary.translatesAutoresizingMaskIntoConstraints = false
+        fullName.becomeFirstResponder()
         fullName.backgroundColor = UIColor.grayColor()
         salary.backgroundColor = UIColor.grayColor()
         fullName.borderStyle = .RoundedRect
@@ -70,19 +79,19 @@ class AddDataViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[salary]-10-|", options: [], metrics: nil, views: viewsDict))
     }
     
-    func changeColor(sender: UISegmentedControl) {
+    func changeEmployees(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
-            index = 1
+            //index = 1
             bookkeepingType.removeFromSuperview()
             businessHours.removeFromSuperview()
             setupCoWorkerView()
         case 2:
-            index = 2
+            //index = 2
             businessHours.removeFromSuperview()
             setupBookkeepingView()
         default:
-            index = 0
+            //index = 0
             seatNumber.removeFromSuperview()
             lunchTime.removeFromSuperview()
             bookkeepingType.removeFromSuperview()
@@ -121,18 +130,23 @@ class AddDataViewController: UIViewController {
     
     private func setupBookkeepingView(){
         setupCoWorkerView()
+        
+        let items = ["начисление зарплаты","учет материалов"]
+        bookkeepingType = UISegmentedControl(items: items)
+        bookkeepingType.selectedSegmentIndex = 0
+        bookkeepingType.layer.cornerRadius = 5.0
         bookkeepingType.translatesAutoresizingMaskIntoConstraints = false
-        bookkeepingType.borderStyle = .RoundedRect
-        bookkeepingType.backgroundColor = UIColor.grayColor()
-        bookkeepingType.placeholder = "тип Бухгалтера"
+        bookkeepingType.backgroundColor = UIColor.blackColor()
+        bookkeepingType.tintColor = UIColor.yellowColor()
         view.addSubview(bookkeepingType)
         let viewsDict = ["lunchTime" : lunchTime, "bookkeepingType" : bookkeepingType]
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[bookkeepingType]-10-|", options: [], metrics: nil, views: viewsDict))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[lunchTime]-8-[bookkeepingType(30)]", options: [], metrics: nil, views: viewsDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[lunchTime]-8-[bookkeepingType(40)]", options: [], metrics: nil, views: viewsDict))
         
     }
     
     func saveData() {
+        
         if self.fullName.text == "" && self.salary.text == "" && self.businessHours.text == "" {
             let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -142,7 +156,7 @@ class AddDataViewController: UIViewController {
         
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
-        switch index {
+        switch customSC.selectedSegmentIndex {
         case 1:
             let coWorker = NSEntityDescription.insertNewObjectForEntityForName("CoWorker", inManagedObjectContext: managedObjectContext) as! CoWorker
             coWorker.fullName = self.fullName.text
@@ -150,7 +164,7 @@ class AddDataViewController: UIViewController {
                 coWorker.salary = atof(salary)
             }
             if let lunchTime = self.lunchTime.text {
-                coWorker.lunchTime = atof(lunchTime)
+                coWorker.lunchTime = lunchTime
             }
             if let seatNumber = self.seatNumber.text {
                 coWorker.seatNumber = atof(seatNumber)
@@ -163,12 +177,12 @@ class AddDataViewController: UIViewController {
                 bookkeeping.salary = atof(salary)
             }
             if let lunchTime = self.lunchTime.text {
-                bookkeeping.lunchTime = atof(lunchTime)
+                bookkeeping.lunchTime = lunchTime
             }
             if let seatNumber = self.seatNumber.text {
                 bookkeeping.seatNumber = atof(seatNumber)
             }
-            bookkeeping.bookkeepingType = self.bookkeepingType.text
+            bookkeeping.bookkeepingType = bookkeepingType.selectedSegmentIndex
         default:
             let leadership = NSEntityDescription.insertNewObjectForEntityForName("Leadership", inManagedObjectContext: managedObjectContext) as! Leadership
             leadership.fullName = self.fullName.text
@@ -176,9 +190,15 @@ class AddDataViewController: UIViewController {
                 leadership.salary = atof(salary)
             }
             if let businessHours = self.businessHours.text {
-                leadership.businessHours = atof(businessHours)
+                leadership.businessHours = businessHours
             }
         }
+        
+        let dataSource = TableDataSource()
+        let viewController = self.navigationController?.viewControllers[0] as! ViewController
+        viewController.tableData = dataSource
+        viewController.tableView.dataSource = dataSource
+        self.navigationController!.popToRootViewControllerAnimated(true)
         
         do {
             try managedObjectContext.save()
@@ -187,12 +207,13 @@ class AddDataViewController: UIViewController {
             return
         }
         
+        
         self.fullName.text = ""
         self.salary.text = ""
         self.businessHours.text = ""
         self.seatNumber.text = ""
         self.lunchTime.text = ""
-        self.bookkeepingType.text = ""
+        self.bookkeepingType.selectedSegmentIndex = 0
         
     }
     

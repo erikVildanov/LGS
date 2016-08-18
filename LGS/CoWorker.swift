@@ -1,5 +1,5 @@
 //
-//  Bookkeeping.swift
+//  CoWorker.swift
 //  LGS
 //
 //  Created by Эрик Вильданов on 18.08.16.
@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 
-class Bookkeeping: CoWorker {
+class CoWorker: Corporate {
 
-    @NSManaged var bookkeepingType: String?
+    @NSManaged var lunchTime: String?
+    @NSManaged var seatNumber: NSNumber?
 }
