@@ -12,7 +12,7 @@ import CoreData
 class AddDataViewController: UIViewController {
     
     let addEditView = AddEditView()
-    private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,65 +37,34 @@ class AddDataViewController: UIViewController {
             return
         }
         
+        let corporateService = CorporateService(context: context)
+        
         switch addEditView.customSC.selectedSegmentIndex {
         case 1:
-            saveDataCoWorker()
+            corporateService.createNewCoWorker(addEditView.fullName.text!,
+                                               salary: atof(addEditView.salary.text!),
+                                               lunchTime: addEditView.lunchTime.text!,
+                                               seatNumber: atof(addEditView.seatNumber.text!))
         case 2:
-            saveDataBookkeeping()
+            corporateService.createNewBookkeeping(addEditView.fullName.text!,
+                                                  salary: atof(addEditView.salary.text!),
+                                                  businessHours: addEditView.businessHours.text!,
+                                                  lunchTime: addEditView.lunchTime.text!,
+                                                  seatNumber: atof(addEditView.seatNumber.text!),
+                                                  bookkeepingType: addEditView.bookkeepingType.selectedSegmentIndex)
         default:
-            saveDataLeadership()
+            corporateService.createNewLeadership(addEditView.fullName.text!,
+                                                 salary: atof(addEditView.salary.text!),
+                                                 businessHours: addEditView.businessHours.text!)
         }
+        
+        corporateService.saveChanges()
         
         reloadTableViewData()
         
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print(error)
-            return
-        }
         defultLable()
     }
-    
-    private func saveDataCoWorker(){
-        let coWorker = NSEntityDescription.insertNewObjectForEntityForName("CoWorker", inManagedObjectContext: managedObjectContext) as! CoWorker
-        coWorker.fullName = addEditView.fullName.text
-        if let salary = addEditView.salary.text {
-            coWorker.salary = atof(salary)
-        }
-        if let lunchTime = addEditView.lunchTime.text {
-            coWorker.lunchTime = lunchTime
-        }
-        if let seatNumber = addEditView.seatNumber.text {
-            coWorker.seatNumber = atof(seatNumber)
-        }
-    }
-    
-    private func saveDataBookkeeping(){
-        let bookkeeping = NSEntityDescription.insertNewObjectForEntityForName("Bookkeeping", inManagedObjectContext: managedObjectContext) as! Bookkeeping
-        bookkeeping.fullName = addEditView.fullName.text
-        if let salary = addEditView.salary.text {
-            bookkeeping.salary = atof(salary)
-        }
-        if let lunchTime = addEditView.lunchTime.text {
-            bookkeeping.lunchTime = lunchTime
-        }
-        if let seatNumber = addEditView.seatNumber.text {
-            bookkeeping.seatNumber = atof(seatNumber)
-        }
-        bookkeeping.bookkeepingType = addEditView.bookkeepingType.selectedSegmentIndex
-    }
-    
-    private func saveDataLeadership(){
-        let leadership = NSEntityDescription.insertNewObjectForEntityForName("Leadership", inManagedObjectContext: managedObjectContext) as! Leadership
-        leadership.fullName = addEditView.fullName.text
-        if let salary = addEditView.salary.text {
-            leadership.salary = atof(salary)
-        }
-        if let businessHours = addEditView.businessHours.text {
-            leadership.businessHours = businessHours
-        }
-    }
+
     
     private func defultLable(){
         addEditView.fullName.text = ""
@@ -108,9 +77,35 @@ class AddDataViewController: UIViewController {
     
     private func reloadTableViewData(){
         let dataSource = TableDataSource()
-        let viewController = self.navigationController?.viewControllers[0] as! ViewController
-        viewController.tableData = dataSource
-        viewController.tableView.dataSource = dataSource
+        let listViewController = self.navigationController?.viewControllers[0] as! ListViewController
+        listViewController.tableData = dataSource
+        listViewController.tableView.dataSource = dataSource
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

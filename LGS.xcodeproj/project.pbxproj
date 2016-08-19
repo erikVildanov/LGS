@@ -8,40 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		8B1426D71D6613CF002D3CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426D61D6613CF002D3CEB /* AppDelegate.swift */; };
-		8B1426D91D6613CF002D3CEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426D81D6613CF002D3CEB /* ViewController.swift */; };
 		8B1426DC1D6613CF002D3CEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1426DA1D6613CF002D3CEB /* Main.storyboard */; };
 		8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B1426DD1D6613CF002D3CEB /* LGS.xcdatamodeld */; };
 		8B1426E11D6613CF002D3CEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1426E01D6613CF002D3CEB /* Assets.xcassets */; };
 		8B1426E41D6613CF002D3CEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1426E21D6613CF002D3CEB /* LaunchScreen.storyboard */; };
 		8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427001D661786002D3CEB /* TableViewCell.swift */; };
-		8B1427031D6618E5002D3CEB /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427021D6618E5002D3CEB /* TableDataSource.swift */; };
 		8B1427051D66198D002D3CEB /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427041D66198D002D3CEB /* AddDataViewController.swift */; };
-		8B14272F1D66283B002D3CEB /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427271D66283B002D3CEB /* Leadership.swift */; };
-		8B1427311D66283B002D3CEB /* CoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1427291D66283B002D3CEB /* CoWorker.swift */; };
-		8B1427331D66283B002D3CEB /* Corporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14272B1D66283B002D3CEB /* Corporate.swift */; };
-		8B1427351D66283B002D3CEB /* Bookkeeping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14272D1D66283B002D3CEB /* Bookkeeping.swift */; };
-		8B8D44371D6660D3001BEAEC /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */; };
-		8B8D44391D6670FC001BEAEC /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8D44381D6670FC001BEAEC /* AddEditView.swift */; };
+		8B1EF4C91D6744FB00D918B9 /* CorporateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4C81D6744FB00D918B9 /* CorporateService.swift */; };
+		8B1EF4D21D67A78500D918B9 /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4CE1D67A78500D918B9 /* Leadership.swift */; };
+		8B1EF4D31D67A78500D918B9 /* Bookkeeping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4CF1D67A78500D918B9 /* Bookkeeping.swift */; };
+		8B1EF4D41D67A78500D918B9 /* Corporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D01D67A78500D918B9 /* Corporate.swift */; };
+		8B1EF4D51D67A78500D918B9 /* CoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D11D67A78500D918B9 /* CoWorker.swift */; };
+		8B1EF4D71D67A79300D918B9 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D61D67A79300D918B9 /* AddEditView.swift */; };
+		8B1EF4DA1D67A7A500D918B9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */; };
+		8B1EF4DB1D67A7A500D918B9 /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */; };
+		8B1EF4DD1D67AA0400D918B9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B1426D31D6613CE002D3CEB /* LGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1426D61D6613CF002D3CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B1426D81D6613CF002D3CEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B1426DB1D6613CF002D3CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B1426DE1D6613CF002D3CEB /* LGS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LGS.xcdatamodel; sourceTree = "<group>"; };
 		8B1426E01D6613CF002D3CEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1426E31D6613CF002D3CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1426E51D6613CF002D3CEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B1427001D661786002D3CEB /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = View/TableViewCell.swift; sourceTree = "<group>"; };
-		8B1427021D6618E5002D3CEB /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableDataSource.swift; path = DataSource/TableDataSource.swift; sourceTree = "<group>"; };
 		8B1427041D66198D002D3CEB /* AddDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddDataViewController.swift; path = Controller/AddDataViewController.swift; sourceTree = "<group>"; };
-		8B1427271D66283B002D3CEB /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leadership.swift; sourceTree = "<group>"; };
-		8B1427291D66283B002D3CEB /* CoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoWorker.swift; sourceTree = "<group>"; };
-		8B14272B1D66283B002D3CEB /* Corporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corporate.swift; sourceTree = "<group>"; };
-		8B14272D1D66283B002D3CEB /* Bookkeeping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookkeeping.swift; sourceTree = "<group>"; };
-		8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDataViewController.swift; sourceTree = "<group>"; };
-		8B8D44381D6670FC001BEAEC /* AddEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
+		8B1EF4C81D6744FB00D918B9 /* CorporateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorporateService.swift; sourceTree = "<group>"; };
+		8B1EF4CE1D67A78500D918B9 /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Leadership.swift; path = Model/Leadership.swift; sourceTree = "<group>"; };
+		8B1EF4CF1D67A78500D918B9 /* Bookkeeping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookkeeping.swift; path = Model/Bookkeeping.swift; sourceTree = "<group>"; };
+		8B1EF4D01D67A78500D918B9 /* Corporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Corporate.swift; path = Model/Corporate.swift; sourceTree = "<group>"; };
+		8B1EF4D11D67A78500D918B9 /* CoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoWorker.swift; path = Model/CoWorker.swift; sourceTree = "<group>"; };
+		8B1EF4D61D67A79300D918B9 /* AddEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEditView.swift; path = View/AddEditView.swift; sourceTree = "<group>"; };
+		8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Controller/ListViewController.swift; sourceTree = "<group>"; };
+		8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditDataViewController.swift; path = Controller/EditDataViewController.swift; sourceTree = "<group>"; };
+		8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,10 @@
 		8B1426FC1D6616A3002D3CEB /* Employees */ = {
 			isa = PBXGroup;
 			children = (
-				8B1427271D66283B002D3CEB /* Leadership.swift */,
-				8B1427291D66283B002D3CEB /* CoWorker.swift */,
-				8B14272B1D66283B002D3CEB /* Corporate.swift */,
-				8B14272D1D66283B002D3CEB /* Bookkeeping.swift */,
+				8B1EF4CE1D67A78500D918B9 /* Leadership.swift */,
+				8B1EF4CF1D67A78500D918B9 /* Bookkeeping.swift */,
+				8B1EF4D01D67A78500D918B9 /* Corporate.swift */,
+				8B1EF4D11D67A78500D918B9 /* CoWorker.swift */,
 			);
 			name = Employees;
 			sourceTree = "<group>";
@@ -110,8 +112,8 @@
 		8B1426FD1D66171E002D3CEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B1EF4D61D67A79300D918B9 /* AddEditView.swift */,
 				8B1427001D661786002D3CEB /* TableViewCell.swift */,
-				8B8D44381D6670FC001BEAEC /* AddEditView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -119,9 +121,9 @@
 		8B1426FE1D661722002D3CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8B1426D81D6613CF002D3CEB /* ViewController.swift */,
+				8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */,
+				8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */,
 				8B1427041D66198D002D3CEB /* AddDataViewController.swift */,
-				8B8D44361D6660D3001BEAEC /* EditDataViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -129,7 +131,8 @@
 		8B1426FF1D66172C002D3CEB /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				8B1427021D6618E5002D3CEB /* TableDataSource.swift */,
+				8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */,
+				8B1EF4C81D6744FB00D918B9 /* CorporateService.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -207,17 +210,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */,
-				8B1427331D66283B002D3CEB /* Corporate.swift in Sources */,
-				8B1427351D66283B002D3CEB /* Bookkeeping.swift in Sources */,
-				8B8D44371D6660D3001BEAEC /* EditDataViewController.swift in Sources */,
-				8B1426D91D6613CF002D3CEB /* ViewController.swift in Sources */,
+				8B1EF4D41D67A78500D918B9 /* Corporate.swift in Sources */,
+				8B1EF4D21D67A78500D918B9 /* Leadership.swift in Sources */,
+				8B1EF4D51D67A78500D918B9 /* CoWorker.swift in Sources */,
+				8B1EF4D31D67A78500D918B9 /* Bookkeeping.swift in Sources */,
+				8B1EF4DA1D67A7A500D918B9 /* ListViewController.swift in Sources */,
+				8B1EF4DD1D67AA0400D918B9 /* TableDataSource.swift in Sources */,
 				8B1427051D66198D002D3CEB /* AddDataViewController.swift in Sources */,
-				8B8D44391D6670FC001BEAEC /* AddEditView.swift in Sources */,
-				8B14272F1D66283B002D3CEB /* Leadership.swift in Sources */,
 				8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */,
-				8B1427311D66283B002D3CEB /* CoWorker.swift in Sources */,
-				8B1427031D6618E5002D3CEB /* TableDataSource.swift in Sources */,
+				8B1EF4D71D67A79300D918B9 /* AddEditView.swift in Sources */,
+				8B1EF4DB1D67A7A500D918B9 /* EditDataViewController.swift in Sources */,
 				8B1426D71D6613CF002D3CEB /* AppDelegate.swift in Sources */,
+				8B1EF4C91D6744FB00D918B9 /* CorporateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

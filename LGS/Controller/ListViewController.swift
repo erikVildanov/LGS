@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate {
-
+class ListViewController: UIViewController, UITableViewDelegate {
+    
     var tableView = UITableView()
     var tableData = TableDataSource()
     
@@ -37,11 +37,11 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func createEditButton() {
-        let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(ViewController.openEdit))
+        let editButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(ListViewController.openEdit))
         
         self.navigationItem.leftBarButtonItem = editButton
         
-        let addButton = UIBarButtonItem(image: UIImage(named: "Plus"), style: .Plain, target: self, action: #selector(ViewController.addNewItem))
+        let addButton = UIBarButtonItem(image: UIImage(named: "Plus"), style: .Plain, target: self, action: #selector(addNewItem))
         self.navigationItem.rightBarButtonItem = addButton
     }
     
@@ -63,17 +63,35 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var addFormViewController = EditDataViewController()
         if indexPath.section == 0 {
-            addFormViewController = EditDataViewController(leadership: self.tableData.leadership[indexPath.row])
+            let editDataViewController = EditDataViewController(leadership: self.tableData.leadership[indexPath.row], index: indexPath.row)
+            self.navigationController?.pushViewController(editDataViewController, animated: true)
         }
         if indexPath.section == 1 {
-            addFormViewController = EditDataViewController(coWorker: self.tableData.coWorker[indexPath.row])
+            let editDataViewController = EditDataViewController(coWorker: self.tableData.coWorker[indexPath.row], index: indexPath.row)
+            self.navigationController?.pushViewController(editDataViewController, animated: true)
         }
         if indexPath.section == 2 {
-            addFormViewController = EditDataViewController(bookkeeping: self.tableData.bookkeeping[indexPath.row])
+            let editDataViewController = EditDataViewController(bookkeeping: self.tableData.bookkeeping[indexPath.row], index: indexPath.row)
+            self.navigationController?.pushViewController(editDataViewController, animated: true)
         }
-        self.navigationController?.pushViewController(addFormViewController, animated: true)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

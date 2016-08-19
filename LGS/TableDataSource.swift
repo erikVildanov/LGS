@@ -14,30 +14,15 @@ class TableDataSource: NSObject ,UITableViewDataSource {
     var leadership: [Leadership] = []
     var coWorker:[CoWorker] = []
     var bookkeeping:[Bookkeeping] = []
+    private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override init() {
         super.init()
-        var nameData = ["Leadership", "CoWorker", "Bookkeeping"]
-        for i in 0..<3 {
-            let fetchRequest = NSFetchRequest(entityName: nameData[i])
-            let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            
-            if let managerObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                if i == 0 {
-                    let fetchedResultsController = (try? managerObjectContext.executeFetchRequest(fetchRequest)) as? [Leadership]
-                    leadership = fetchedResultsController!
-                }
-                if i == 1 {
-                    let fetchedResultsController = (try? managerObjectContext.executeFetchRequest(fetchRequest)) as? [CoWorker]
-                    coWorker = fetchedResultsController!
-                }
-                if i == 2 {
-                    let fetchedResultsController = (try? managerObjectContext.executeFetchRequest(fetchRequest)) as? [Bookkeeping]
-                    bookkeeping = fetchedResultsController!
-                }
-            }
-        }
+        
+        let corporateService = CorporateService(context: context)
+        leadership = corporateService.getAllLeadership()
+        coWorker = corporateService.getAllCoWorker()
+        bookkeeping = corporateService.getAllBookkeeping()
         
     }
     
@@ -116,27 +101,26 @@ class TableDataSource: NSObject ,UITableViewDataSource {
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        let managerObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+        let corporateService = CorporateService(context: context)
         
         switch editingStyle {
         case .Delete:
             if indexPath.section == 0 {
-                managerObjectContext!.deleteObject(leadership[indexPath.row] )
+                let deleteLeadership = corporateService.getByIdLeadership(leadership[indexPath.row].objectID)!
+                corporateService.deleteLeadership(deleteLeadership.objectID)
                 leadership.removeAtIndex(indexPath.row)
             }
             if indexPath.section == 1 {
-                managerObjectContext!.deleteObject(coWorker[indexPath.row] )
+                let deleteCoWorker = corporateService.getByIdCoWorker(coWorker[indexPath.row].objectID)!
+                corporateService.deleteCoWorker(deleteCoWorker.objectID)
                 coWorker.removeAtIndex(indexPath.row)
             }
             if indexPath.section == 2 {
-                managerObjectContext!.deleteObject(bookkeeping[indexPath.row] )
+                let deleteBookkeepingType = corporateService.getByIdBookkeeping(bookkeeping[indexPath.row].objectID)!
+                corporateService.deleteBookkeeping(deleteBookkeepingType.objectID)
                 bookkeeping.removeAtIndex(indexPath.row)
             }
-            do {
-                try managerObjectContext!.save()
-            } catch {
-                print(error)
-            }
+            corporateService.saveChanges()
         default:
             return
         }
