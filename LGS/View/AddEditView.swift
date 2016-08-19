@@ -125,16 +125,13 @@ class AddEditView: UIView {
     func changeEmployees(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 1:
-            //index = 1
             bookkeepingType.removeFromSuperview()
             businessHours.removeFromSuperview()
             setupCoWorkerView()
         case 2:
-            //index = 2
             businessHours.removeFromSuperview()
             setupBookkeepingView()
         default:
-            //index = 0
             seatNumber.removeFromSuperview()
             lunchTime.removeFromSuperview()
             bookkeepingType.removeFromSuperview()

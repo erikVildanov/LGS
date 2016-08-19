@@ -30,12 +30,7 @@ class AddDataViewController: UIViewController {
     
      func saveData() {
         
-        if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.businessHours.text == "" {
-            let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
-            return
-        }
+        checkLable(addEditView.customSC.selectedSegmentIndex)
         
         let corporateService = CorporateService(context: context)
         
@@ -65,7 +60,6 @@ class AddDataViewController: UIViewController {
         defultLable()
     }
 
-    
     private func defultLable(){
         addEditView.fullName.text = ""
         addEditView.salary.text = ""
@@ -82,6 +76,26 @@ class AddDataViewController: UIViewController {
         listViewController.tableView.dataSource = dataSource
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
+
+    func checkLable(section: Int){
+        switch section {
+        case 0:
+            if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.businessHours.text == "" {
+                let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+        default:
+            if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.lunchTime.text == "" && addEditView.seatNumber.text == "" {
+                let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+        }
+    }
+    
 }
 
 
