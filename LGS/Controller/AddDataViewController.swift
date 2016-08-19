@@ -12,6 +12,7 @@ import CoreData
 class AddDataViewController: UIViewController {
     
     let addEditView = AddEditView()
+    private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class AddDataViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func saveData() {
+     func saveData() {
         
         if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.businessHours.text == "" {
             let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
@@ -36,51 +37,16 @@ class AddDataViewController: UIViewController {
             return
         }
         
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
         switch addEditView.customSC.selectedSegmentIndex {
         case 1:
-            let coWorker = NSEntityDescription.insertNewObjectForEntityForName("CoWorker", inManagedObjectContext: managedObjectContext) as! CoWorker
-            coWorker.fullName = addEditView.fullName.text
-            if let salary = addEditView.salary.text {
-                coWorker.salary = atof(salary)
-            }
-            if let lunchTime = addEditView.lunchTime.text {
-                coWorker.lunchTime = lunchTime
-            }
-            if let seatNumber = addEditView.seatNumber.text {
-                coWorker.seatNumber = atof(seatNumber)
-            }
-            
+            saveDataCoWorker()
         case 2:
-            let bookkeeping = NSEntityDescription.insertNewObjectForEntityForName("Bookkeeping", inManagedObjectContext: managedObjectContext) as! Bookkeeping
-            bookkeeping.fullName = addEditView.fullName.text
-            if let salary = addEditView.salary.text {
-                bookkeeping.salary = atof(salary)
-            }
-            if let lunchTime = addEditView.lunchTime.text {
-                bookkeeping.lunchTime = lunchTime
-            }
-            if let seatNumber = addEditView.seatNumber.text {
-                bookkeeping.seatNumber = atof(seatNumber)
-            }
-            bookkeeping.bookkeepingType = addEditView.bookkeepingType.selectedSegmentIndex
+            saveDataBookkeeping()
         default:
-            let leadership = NSEntityDescription.insertNewObjectForEntityForName("Leadership", inManagedObjectContext: managedObjectContext) as! Leadership
-            leadership.fullName = addEditView.fullName.text
-            if let salary = addEditView.salary.text {
-                leadership.salary = atof(salary)
-            }
-            if let businessHours = addEditView.businessHours.text {
-                leadership.businessHours = businessHours
-            }
+            saveDataLeadership()
         }
         
-        let dataSource = TableDataSource()
-        let viewController = self.navigationController?.viewControllers[0] as! ViewController
-        viewController.tableData = dataSource
-        viewController.tableView.dataSource = dataSource
-        self.navigationController!.popToRootViewControllerAnimated(true)
+        reloadTableViewData()
         
         do {
             try managedObjectContext.save()
@@ -88,14 +54,63 @@ class AddDataViewController: UIViewController {
             print(error)
             return
         }
-        
+        defultLable()
+    }
+    
+    private func saveDataCoWorker(){
+        let coWorker = NSEntityDescription.insertNewObjectForEntityForName("CoWorker", inManagedObjectContext: managedObjectContext) as! CoWorker
+        coWorker.fullName = addEditView.fullName.text
+        if let salary = addEditView.salary.text {
+            coWorker.salary = atof(salary)
+        }
+        if let lunchTime = addEditView.lunchTime.text {
+            coWorker.lunchTime = lunchTime
+        }
+        if let seatNumber = addEditView.seatNumber.text {
+            coWorker.seatNumber = atof(seatNumber)
+        }
+    }
+    
+    private func saveDataBookkeeping(){
+        let bookkeeping = NSEntityDescription.insertNewObjectForEntityForName("Bookkeeping", inManagedObjectContext: managedObjectContext) as! Bookkeeping
+        bookkeeping.fullName = addEditView.fullName.text
+        if let salary = addEditView.salary.text {
+            bookkeeping.salary = atof(salary)
+        }
+        if let lunchTime = addEditView.lunchTime.text {
+            bookkeeping.lunchTime = lunchTime
+        }
+        if let seatNumber = addEditView.seatNumber.text {
+            bookkeeping.seatNumber = atof(seatNumber)
+        }
+        bookkeeping.bookkeepingType = addEditView.bookkeepingType.selectedSegmentIndex
+    }
+    
+    private func saveDataLeadership(){
+        let leadership = NSEntityDescription.insertNewObjectForEntityForName("Leadership", inManagedObjectContext: managedObjectContext) as! Leadership
+        leadership.fullName = addEditView.fullName.text
+        if let salary = addEditView.salary.text {
+            leadership.salary = atof(salary)
+        }
+        if let businessHours = addEditView.businessHours.text {
+            leadership.businessHours = businessHours
+        }
+    }
+    
+    private func defultLable(){
         addEditView.fullName.text = ""
         addEditView.salary.text = ""
         addEditView.businessHours.text = ""
         addEditView.seatNumber.text = ""
         addEditView.lunchTime.text = ""
         addEditView.bookkeepingType.selectedSegmentIndex = 0
-        
     }
     
+    private func reloadTableViewData(){
+        let dataSource = TableDataSource()
+        let viewController = self.navigationController?.viewControllers[0] as! ViewController
+        viewController.tableData = dataSource
+        viewController.tableView.dataSource = dataSource
+        self.navigationController!.popToRootViewControllerAnimated(true)
+    }
 }

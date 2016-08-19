@@ -41,7 +41,7 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         
     }
     
-    func makeAttributedString(title title: String, subtitle: String) -> NSAttributedString {
+    private func makeAttributedString(title title: String, subtitle: String) -> NSAttributedString {
         let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: UIColor.blackColor()]
         let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
         
