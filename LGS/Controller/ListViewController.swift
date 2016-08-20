@@ -31,9 +31,8 @@ class ListViewController: UIViewController, UITableViewDelegate {
     
     func setupConstraints() {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        let viewsDict = ["tableView" : tableView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: [], metrics: nil, views: viewsDict))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: [], metrics: nil, views: viewsDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: [], metrics: nil, views: ["tableView" : tableView]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: [], metrics: nil, views: ["tableView" : tableView]))
     }
     
     func createEditButton() {
@@ -81,7 +80,53 @@ class ListViewController: UIViewController, UITableViewDelegate {
 
 
 
+class MyCell: UITableViewCell {
+    var placeholderImageView: UIImageView!
+    var myImageView: UIImageView!
+    var imageUrl: NSURL!
+    // ...
+}
 
+struct MyModel {
+    let text: String
+    let imageUrl: NSURL
+    // ...
+}
+
+class MyViewController: UITableViewController {
+    var models: [MyModel]!
+    
+    override func tableView(tableView: UITableView,
+                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let data = models[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell",
+                                                               forIndexPath: indexPath) as! MyCell
+        cell.textLabel?.text = data.text
+        
+        // Image loading.
+        cell.imageUrl = data.imageUrl // For recycled cells' late image loads.
+        if let image = data.imageUrl.cachedImage {
+            // Cached: set immediately.
+            cell.myImageView.image = image
+            cell.myImageView.alpha = 1
+        } else {
+            // Not cached, so load then fade it in.
+            cell.myImageView.alpha = 0
+            data.imageUrl.fetchImage { image in
+                // Check the cell hasn't recycled while loading.
+                if cell.imageUrl == data.imageUrl {
+                    cell.myImageView.image = image
+                    UIView.animateWithDuration(0.3) {
+                        cell.myImageView.alpha = 1
+                    }
+                }
+            }
+        }
+        
+        return cell
+    }
+    
+}
 
 
 

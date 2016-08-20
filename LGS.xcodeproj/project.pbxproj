@@ -23,6 +23,15 @@
 		8B1EF4DA1D67A7A500D918B9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */; };
 		8B1EF4DB1D67A7A500D918B9 /* EditDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */; };
 		8B1EF4DD1D67AA0400D918B9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */; };
+		8BCD10D01D67B2180082E7F8 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10CF1D67B2180082E7F8 /* GalleryViewController.swift */; };
+		8BCD10D21D67B28A0082E7F8 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10D11D67B28A0082E7F8 /* GalleryView.swift */; };
+		8BCD10D41D686A040082E7F8 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD10D31D686A040082E7F8 /* image.png */; };
+		8BCD10DC1D689BD00082E7F8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10DB1D689BD00082E7F8 /* Image.swift */; };
+		8BCD10DE1D689C320082E7F8 /* image.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BCD10DD1D689C320082E7F8 /* image.plist */; };
+		8BCD10E01D689D9C0082E7F8 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10DF1D689D9C0082E7F8 /* CollectionDataSource.swift */; };
+		8BCD10E61D68C3E70082E7F8 /* FullScreanViewConrtoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10E51D68C3E70082E7F8 /* FullScreanViewConrtoller.swift */; };
+		8BCD10E81D69146A0082E7F8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10E71D69146A0082E7F8 /* ImageCache.swift */; };
+		8BCD10EA1D691A470082E7F8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10E91D691A470082E7F8 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +53,15 @@
 		8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Controller/ListViewController.swift; sourceTree = "<group>"; };
 		8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditDataViewController.swift; path = Controller/EditDataViewController.swift; sourceTree = "<group>"; };
 		8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		8BCD10CF1D67B2180082E7F8 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = Controller/GalleryViewController.swift; sourceTree = "<group>"; };
+		8BCD10D11D67B28A0082E7F8 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryView.swift; path = View/GalleryView.swift; sourceTree = "<group>"; };
+		8BCD10D31D686A040082E7F8 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image.png; path = ../../Downloads/UIScrollViewFinal/ScrollViewDemo/ScrollViewDemo/image.png; sourceTree = "<group>"; };
+		8BCD10DB1D689BD00082E7F8 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		8BCD10DD1D689C320082E7F8 /* image.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = image.plist; path = ../../Desktop/image.plist; sourceTree = "<group>"; };
+		8BCD10DF1D689D9C0082E7F8 /* CollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		8BCD10E51D68C3E70082E7F8 /* FullScreanViewConrtoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullScreanViewConrtoller.swift; path = View/FullScreanViewConrtoller.swift; sourceTree = "<group>"; };
+		8BCD10E71D69146A0082E7F8 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		8BCD10E91D691A470082E7F8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = View/CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +99,13 @@
 				8B1426FE1D661722002D3CEB /* Controller */,
 				8B1426FF1D66172C002D3CEB /* DataSource */,
 				8B1426D61D6613CF002D3CEB /* AppDelegate.swift */,
+				8BCD10E71D69146A0082E7F8 /* ImageCache.swift */,
 				8B1426DA1D6613CF002D3CEB /* Main.storyboard */,
 				8B1426E01D6613CF002D3CEB /* Assets.xcassets */,
 				8B1426E21D6613CF002D3CEB /* LaunchScreen.storyboard */,
+				8BCD10D31D686A040082E7F8 /* image.png */,
 				8B1426E51D6613CF002D3CEB /* Info.plist */,
+				8BCD10DD1D689C320082E7F8 /* image.plist */,
 				8B1426DD1D6613CF002D3CEB /* LGS.xcdatamodeld */,
 			);
 			path = LGS;
@@ -94,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				8B1426FC1D6616A3002D3CEB /* Employees */,
+				8BCD10DB1D689BD00082E7F8 /* Image.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -114,6 +136,8 @@
 			children = (
 				8B1EF4D61D67A79300D918B9 /* AddEditView.swift */,
 				8B1427001D661786002D3CEB /* TableViewCell.swift */,
+				8BCD10D11D67B28A0082E7F8 /* GalleryView.swift */,
+				8BCD10E91D691A470082E7F8 /* CollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -124,6 +148,8 @@
 				8B1EF4D81D67A7A500D918B9 /* ListViewController.swift */,
 				8B1EF4D91D67A7A500D918B9 /* EditDataViewController.swift */,
 				8B1427041D66198D002D3CEB /* AddDataViewController.swift */,
+				8BCD10CF1D67B2180082E7F8 /* GalleryViewController.swift */,
+				8BCD10E51D68C3E70082E7F8 /* FullScreanViewConrtoller.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -133,6 +159,7 @@
 			children = (
 				8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */,
 				8B1EF4C81D6744FB00D918B9 /* CorporateService.swift */,
+				8BCD10DF1D689D9C0082E7F8 /* CollectionDataSource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -199,6 +226,8 @@
 				8B1426E41D6613CF002D3CEB /* LaunchScreen.storyboard in Resources */,
 				8B1426E11D6613CF002D3CEB /* Assets.xcassets in Resources */,
 				8B1426DC1D6613CF002D3CEB /* Main.storyboard in Resources */,
+				8BCD10D41D686A040082E7F8 /* image.png in Resources */,
+				8BCD10DE1D689C320082E7F8 /* image.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,17 +239,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */,
+				8BCD10D01D67B2180082E7F8 /* GalleryViewController.swift in Sources */,
 				8B1EF4D41D67A78500D918B9 /* Corporate.swift in Sources */,
 				8B1EF4D21D67A78500D918B9 /* Leadership.swift in Sources */,
+				8BCD10D21D67B28A0082E7F8 /* GalleryView.swift in Sources */,
 				8B1EF4D51D67A78500D918B9 /* CoWorker.swift in Sources */,
 				8B1EF4D31D67A78500D918B9 /* Bookkeeping.swift in Sources */,
 				8B1EF4DA1D67A7A500D918B9 /* ListViewController.swift in Sources */,
+				8BCD10E61D68C3E70082E7F8 /* FullScreanViewConrtoller.swift in Sources */,
+				8BCD10E81D69146A0082E7F8 /* ImageCache.swift in Sources */,
+				8BCD10EA1D691A470082E7F8 /* CollectionViewCell.swift in Sources */,
 				8B1EF4DD1D67AA0400D918B9 /* TableDataSource.swift in Sources */,
+				8BCD10DC1D689BD00082E7F8 /* Image.swift in Sources */,
 				8B1427051D66198D002D3CEB /* AddDataViewController.swift in Sources */,
 				8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */,
 				8B1EF4D71D67A79300D918B9 /* AddEditView.swift in Sources */,
 				8B1EF4DB1D67A7A500D918B9 /* EditDataViewController.swift in Sources */,
 				8B1426D71D6613CF002D3CEB /* AppDelegate.swift in Sources */,
+				8BCD10E01D689D9C0082E7F8 /* CollectionDataSource.swift in Sources */,
 				8B1EF4C91D6744FB00D918B9 /* CorporateService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
