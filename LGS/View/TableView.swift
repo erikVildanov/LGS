@@ -1,22 +1,22 @@
 //
-//  GalleryView.swift
+//  TableView.swift
 //  LGS
 //
-//  Created by Эрик Вильданов on 20.08.16.
+//  Created by Эрик Вильданов on 22.08.16.
 //  Copyright © 2016 ErikVildanov. All rights reserved.
 //
 
 import UIKit
 
-class GalleryView: UIView {
+class TableView: UIView {
 
-    var collectionView: UICollectionView!
+    var tableView = UITableView()
     let navigationBar = UINavigationBar()
     let toolBar = UIToolbar()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.whiteColor()
         initializeView()
     }
     
@@ -28,67 +28,28 @@ class GalleryView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func initializeView(){
-        let flowLayout = UICollectionViewFlowLayout()
-        
-        collectionView = UICollectionView(frame: CGRectMake(0, 0, 0, 0), collectionViewLayout: flowLayout)
-        
-        addSubview(collectionView)
+
+    func initializeView(){
+        addSubview(tableView)
         addSubview(navigationBar)
         addSubview(toolBar)
-
+        tableView.estimatedRowHeight = 109
+        tableView.rowHeight = UITableViewAutomaticDimension
         let viewsDict = [
-            "collectionView" : collectionView,
+            "tableView" : tableView,
             "navigationBar" : navigationBar,
             "toolBar" : toolBar
         ]
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: [], metrics: nil, views: viewsDict))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[navigationBar]|", options: [], metrics: nil, views: viewsDict))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[toolBar]|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)][collectionView][toolBar(50)]|", options: [], metrics: nil, views: viewsDict))
-        
-        let navItem = UINavigationItem(title: "List")
-        navigationBar.setItems([navItem], animated: false)
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)][tableView][toolBar(50)]|", options: [], metrics: nil, views: viewsDict))
         
     }
     
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

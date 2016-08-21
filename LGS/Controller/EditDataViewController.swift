@@ -19,10 +19,7 @@ class EditDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = addEditView
-        
-        let saveButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(EditDataViewController.updateData))
-        
-        self.navigationItem.rightBarButtonItem = saveButton
+        createBarButton()
         // Do any additional setup after loading the view.
     }
     
@@ -30,7 +27,7 @@ class EditDataViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.index = index
         self.section = 0
-        addEditView.customSC.selectedSegmentIndex = 0
+        addEditView.segmentedControl.selectedSegmentIndex = 0
         addEditView.setupLeadershipView()
         addEditView.fullName.text = leadership.fullName
         addEditView.salary.text! = "\(leadership.salary!)"
@@ -41,7 +38,7 @@ class EditDataViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.index = index
         self.section = 1
-        addEditView.customSC.selectedSegmentIndex = 1
+        addEditView.segmentedControl.selectedSegmentIndex = 1
         addEditView.setupCoWorkerView()
         addEditView.fullName.text = coWorker.fullName
         addEditView.salary.text = "\(coWorker.salary!)"
@@ -53,7 +50,7 @@ class EditDataViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.index = index
         self.section = 2
-        addEditView.customSC.selectedSegmentIndex = 2
+        addEditView.segmentedControl.selectedSegmentIndex = 2
         addEditView.setupBookkeepingView()
         addEditView.fullName.text = bookkeeping.fullName
         addEditView.salary.text = "\(bookkeeping.salary!)"
@@ -61,8 +58,6 @@ class EditDataViewController: UIViewController {
         addEditView.seatNumber.text = "\(bookkeeping.seatNumber!)"
         addEditView.bookkeepingType.selectedSegmentIndex = (bookkeeping.bookkeepingType?.integerValue)!
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,11 +68,20 @@ class EditDataViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func createBarButton() {
+        let navItem = UINavigationItem(title: "Edit")
+        let saveButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(EditDataViewController.updateData))
+        navItem.rightBarButtonItem = saveButton
+        let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: #selector(EditDataViewController.backListViewControllet))
+        navItem.leftBarButtonItem = backButton
+        addEditView.navigationBar.setItems([navItem], animated: false)
+    }
+    
     func updateData(){
         
         let corporateService = CorporateService(context: context)
         
-        switch addEditView.customSC.selectedSegmentIndex {
+        switch addEditView.segmentedControl.selectedSegmentIndex {
         case 1:
             updateCoWorker(corporateService)
         case 2:
@@ -85,16 +89,13 @@ class EditDataViewController: UIViewController {
         default:
             updateLeadership(corporateService)
         }
-        reloadTableViewData()
+        
         corporateService.saveChanges()
     }
     
-    private func reloadTableViewData(){
-        let dataSource = TableDataSource()
-        let listViewController = self.navigationController?.viewControllers[0] as! ListViewController
-        listViewController.tableData = dataSource
-        listViewController.tableView.dataSource = dataSource
-        self.navigationController!.popToRootViewControllerAnimated(true)
+    func backListViewControllet(){
+        let listViewController = ListViewController()
+        self.presentViewController(listViewController, animated: true, completion: nil)
     }
 
     func updateLeadership(corporateService: CorporateService){
@@ -108,7 +109,7 @@ class EditDataViewController: UIViewController {
                 corporateService.updateLeadership(updateLeadership)
             }
         } else {
-            crateData(addEditView.customSC.selectedSegmentIndex)
+            crateData(addEditView.segmentedControl.selectedSegmentIndex)
             deleteData(section)
             
         }
@@ -127,7 +128,7 @@ class EditDataViewController: UIViewController {
                 corporateService.updateBookkeeping(updateBookkeeping)
             }
         } else {
-            crateData(addEditView.customSC.selectedSegmentIndex)
+            crateData(addEditView.segmentedControl.selectedSegmentIndex)
             deleteData(section)
         }
     }
@@ -145,7 +146,7 @@ class EditDataViewController: UIViewController {
                 corporateService.updateCoWorker(updateCoWorker)
             }
         } else {
-            crateData(addEditView.customSC.selectedSegmentIndex)
+            crateData(addEditView.segmentedControl.selectedSegmentIndex)
             deleteData(section)
         }
     }
@@ -166,7 +167,6 @@ class EditDataViewController: UIViewController {
             corporateService.createNewLeadership(addEditView.fullName.text!, salary: atof(addEditView.salary.text!),  businessHours: addEditView.businessHours.text!)
         }
         corporateService.saveChanges()
-        reloadTableViewData()
     }
     
     func deleteData(section: Int){
@@ -191,8 +191,6 @@ class EditDataViewController: UIViewController {
             readLeadership.removeAtIndex(index)
         }
         corporateService.saveChanges()
-        reloadTableViewData()
-        
 
     }
     

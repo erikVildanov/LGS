@@ -17,9 +17,7 @@ class AddDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = addEditView
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: #selector(AddDataViewController.saveData))
-
-        self.navigationItem.rightBarButtonItem = saveButton
+        createBarButton()
         // Do any additional setup after loading the view.
     }
     
@@ -28,13 +26,27 @@ class AddDataViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func createBarButton() {
+        let navItem = UINavigationItem(title: "Create")
+        let saveButton = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(AddDataViewController.saveData))
+        navItem.rightBarButtonItem = saveButton
+        let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: #selector(AddDataViewController.backListViewControllet))
+        navItem.leftBarButtonItem = backButton
+        addEditView.navigationBar.setItems([navItem], animated: false)
+    }
+    
+    func backListViewControllet(){
+        let listViewController = ListViewController()
+        self.presentViewController(listViewController, animated: true, completion: nil)
+    }
+    
      func saveData() {
         
-        checkLable(addEditView.customSC.selectedSegmentIndex)
+        checkLable(addEditView.segmentedControl.selectedSegmentIndex)
         
         let corporateService = CorporateService(context: context)
         
-        switch addEditView.customSC.selectedSegmentIndex {
+        switch addEditView.segmentedControl.selectedSegmentIndex {
         case 1:
             corporateService.createNewCoWorker(addEditView.fullName.text!,
                                                salary: atof(addEditView.salary.text!),
@@ -55,8 +67,6 @@ class AddDataViewController: UIViewController {
         
         corporateService.saveChanges()
         
-        reloadTableViewData()
-        
         defultLable()
     }
 
@@ -67,14 +77,6 @@ class AddDataViewController: UIViewController {
         addEditView.seatNumber.text = ""
         addEditView.lunchTime.text = ""
         addEditView.bookkeepingType.selectedSegmentIndex = 0
-    }
-    
-    private func reloadTableViewData(){
-        let dataSource = TableDataSource()
-        let listViewController = self.navigationController?.viewControllers[0] as! ListViewController
-        listViewController.tableData = dataSource
-        listViewController.tableView.dataSource = dataSource
-        self.navigationController!.popToRootViewControllerAnimated(true)
     }
 
     func checkLable(section: Int){

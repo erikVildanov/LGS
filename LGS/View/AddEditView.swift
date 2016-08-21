@@ -10,17 +10,19 @@ import UIKit
 
 class AddEditView: UIView {
     
-    var customSC: UISegmentedControl!
+    var segmentedControl: UISegmentedControl!
     var fullName = UITextField()
     var salary = UITextField()
     var businessHours = UITextField()
     var seatNumber = UITextField()
     var lunchTime = UITextField()
     var bookkeepingType = UISegmentedControl()
+    let navigationBar = UINavigationBar()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor.whiteColor()
+        initializeNavigationBar()
         initializeSegmentedControll()
         initializeCorporateViews()
         setupLeadershipView()
@@ -43,19 +45,26 @@ class AddEditView: UIView {
         lunchTime.keyboardType = .NumbersAndPunctuation
     }
     
+    func initializeNavigationBar(){
+        addSubview(navigationBar)
+        let viewsDict = ["navigationBar" : navigationBar]
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[navigationBar]|", options: [], metrics: nil, views: viewsDict))
+    }
+    
     private func initializeSegmentedControll(){
         let items = ["Руководство","Сотрудник","Бухгалтер"]
-        customSC = UISegmentedControl(items: items)
-        customSC.selectedSegmentIndex = 0
-        customSC.layer.cornerRadius = 5.0
-        customSC.translatesAutoresizingMaskIntoConstraints = false
-        customSC.backgroundColor = UIColor.blackColor()
-        customSC.tintColor = UIColor.yellowColor()
-        customSC.addTarget(self, action: #selector(AddEditView.changeEmployees(_:)), forControlEvents: .ValueChanged)
-        addSubview(customSC)
-        let viewsDict = ["customSC" : customSC]
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[customSC]-10-|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-70-[customSC(60)]", options: [], metrics: nil, views: viewsDict))
+        segmentedControl = UISegmentedControl(items: items)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.layer.cornerRadius = 5.0
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.backgroundColor = UIColor.blackColor()
+        segmentedControl.tintColor = UIColor.yellowColor()
+        segmentedControl.addTarget(self, action: #selector(AddEditView.changeEmployees(_:)), forControlEvents: .ValueChanged)
+        addSubview(segmentedControl)
+        let viewsDict = ["segmentedControl" : segmentedControl, "navigationBar" : navigationBar]
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[segmentedControl]-10-|", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)]-5-[segmentedControl(60)]", options: [], metrics: nil, views: viewsDict))
     }
     
     private func initializeCorporateViews(){
@@ -70,9 +79,9 @@ class AddEditView: UIView {
         salary.placeholder = "Зарплата"
         addSubview(fullName)
         addSubview(salary)
-        let viewsDict = [ "customSC" : customSC, "fullName" : fullName, "salary" : salary]
+        let viewsDict = [ "segmentedControl" : segmentedControl, "fullName" : fullName, "salary" : salary]
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[fullName]-10-|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[customSC(60)]-8-[fullName(30)]-8-[salary(30)]", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[segmentedControl(60)]-8-[fullName(30)]-8-[salary(30)]", options: [], metrics: nil, views: viewsDict))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[salary]-10-|", options: [], metrics: nil, views: viewsDict))
     }
     

@@ -8,32 +8,42 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class GalleryViewController: UIViewController, UICollectionViewDelegate {
     
-    var collectionView: UICollectionView!
+    let galleryView = GalleryView()
     var collectionData = CollectionDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let flowLayout = UICollectionViewFlowLayout()
-
-        collectionView = UICollectionView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height), collectionViewLayout: flowLayout)
-        
-        collectionView.dataSource = collectionData
-        collectionView.delegate = self
-        collectionView.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "cellImage")
-        self.view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
+        view = galleryView
+        galleryView.collectionView.delegate = self
+        galleryView.collectionView.dataSource = collectionData
+        galleryView.collectionView.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "cellImage")
+        createToolBarButton()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    func createToolBarButton() {
+        galleryView.toolBar.items = [
+            UIBarButtonItem(title: "Gallery", style: UIBarButtonItemStyle.Plain, target: self, action: nil),
+            UIBarButtonItem(title: "List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpListViewController)),
+            UIBarButtonItem(title: "Service", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpServiceViewController))
+        ]
+    }
+    
+    func jumpListViewController(){
+        let listViewController = ListViewController()
+        listViewController.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(listViewController, animated: true, completion: nil)
+    }
+    
+    func jumpServiceViewController(){
+        
+    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 90, height: 90)
@@ -49,10 +59,47 @@ class GalleryViewController: UIViewController, UICollectionViewDelegateFlowLayou
         return UIEdgeInsetsMake(10, margin, 10, margin)
     }
     
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let fullScreanViewController = FullScreanViewController()
-        fullScreanViewController.img(collectionData.image, indexPath: indexPath.row)
-        self.navigationController?.pushViewController(fullScreanViewController, animated: true)
+        let pageViewController = PageViewController()
+        pageViewController.photos = collectionData.image
+        pageViewController.currentIndex = indexPath.row
+        pageViewController.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(pageViewController, animated: true, completion: nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
