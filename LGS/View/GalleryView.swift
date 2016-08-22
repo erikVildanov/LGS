@@ -51,7 +51,7 @@ class GalleryView: UIView {
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[toolBar]|", options: [], metrics: nil, views: viewsDict))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)][collectionView][toolBar(50)]|", options: [], metrics: nil, views: viewsDict))
         
-        let navItem = UINavigationItem(title: "List")
+        let navItem = UINavigationItem(title: "Gallery")
         navigationBar.setItems([navItem], animated: false)
         
     }

@@ -41,8 +41,11 @@ class PageViewController: UIPageViewController {
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)]", options: [], metrics: nil, views: ["navigationBar": navigationBar]))
         
         let navItem = UINavigationItem()
-        //        let saveButton = UIBarButtonItem(title: "Update", style: .Plain, target: self, action: #selector(EditDataViewController.updateData))
-        //        navItem.rightBarButtonItem = saveButton
+        
+        let leftButton = UIBarButtonItem(image: UIImage(named: "Left"), style: .Plain, target: self, action: #selector(goLeftImage))
+        let fightButton = UIBarButtonItem(image: UIImage(named: "Right"), style: .Plain, target: self, action: #selector(goRightImage))
+        navItem.rightBarButtonItems = [fightButton, leftButton]
+        
         let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: #selector(backGalleryViewController))
         navItem.leftBarButtonItem = backButton
         navigationBar.setItems([navItem], animated: false)
@@ -53,30 +56,46 @@ class PageViewController: UIPageViewController {
         self.presentViewController(galleryViewController, animated: true, completion: nil)
     }
     
+    func goLeftImage(){
+        if let viewController = viewFullScreanViewController(currentIndex - 1 ?? 0) {
+            let viewControllers = [viewController]
+            setViewControllers(viewControllers, direction: .Reverse, animated: true, completion: nil)
+        }
+    }
+    
+    func goRightImage(){
+        if let viewController = viewFullScreanViewController(currentIndex + 1 ?? 0) {
+            let viewControllers = [viewController]
+            setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
+        }
+    }
+    
     func viewFullScreanViewController(index: Int) -> FullScreanViewController? {
+        
         if index >= 0 && index < photos.count {
+            currentIndex = index
         let fullScreanViewController = FullScreanViewController()
             let data = photos[index]
             if let image = data.url.cachedImage {
                 fullScreanViewController.image = image
                 fullScreanViewController.imageIngex =  index
         } else {
-            data.url?.fetchImage { img in
-                fullScreanViewController.image = img
+            data.url.fetchImage { image in
+                fullScreanViewController.image = image
                 fullScreanViewController.imageIngex =  index
+                fullScreanViewController.initializeImageView()
             }
         }
             return fullScreanViewController
         }
+
         return nil
+        
     }
 }
 
-//MARK: implementation of UIPageViewControllerDataSource
 extension PageViewController: UIPageViewControllerDataSource {
-    // 1
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         if let viewController = viewController as? FullScreanViewController {
             var index = viewController.imageIngex
@@ -87,9 +106,7 @@ extension PageViewController: UIPageViewControllerDataSource {
         return nil
     }
     
-    // 2
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         if let viewController = viewController as? FullScreanViewController {
             var index = viewController.imageIngex
@@ -101,4 +118,6 @@ extension PageViewController: UIPageViewControllerDataSource {
         return nil
     }
 }
+
+
 

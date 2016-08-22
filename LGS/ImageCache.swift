@@ -31,7 +31,7 @@ extension NSURL {
     
     func fetchImage(completion: ImageCacheCompletion) {
         let task = NSURLSession.sharedSession().dataTaskWithURL(self) {
-            data, response, error in
+            data, _, error in
             if error == nil {
                 if let  data = data,
                     image = UIImage(data: data) {

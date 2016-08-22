@@ -30,7 +30,9 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate {
     func createToolBarButton() {
         galleryView.toolBar.items = [
             UIBarButtonItem(title: "Gallery", style: UIBarButtonItemStyle.Plain, target: self, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil),
             UIBarButtonItem(title: "List", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpListViewController)),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil),
             UIBarButtonItem(title: "Service", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpServiceViewController))
         ]
     }

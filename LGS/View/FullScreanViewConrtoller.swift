@@ -22,6 +22,7 @@ class FullScreanViewController: UIViewController, UIScrollViewDelegate {
         fullScreanView.scrollView.delegate = self
         
         initializeImageView()
+        setupGestureRecognizer()
 
     }
     
@@ -78,40 +79,19 @@ class FullScreanViewController: UIViewController, UIScrollViewDelegate {
         return fullScreanView.imageView
     }
     
+    func setupGestureRecognizer() {
+        fullScreanView.imageView.userInteractionEnabled = true
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        fullScreanView.imageView.addGestureRecognizer(doubleTap)
+    }
+    
+    func handleDoubleTap() {
+        if fullScreanView.scrollView.zoomScale > fullScreanView.scrollView.minimumZoomScale {
+            fullScreanView.scrollView.setZoomScale(fullScreanView.scrollView.minimumZoomScale, animated: true)
+        } else {
+            fullScreanView.scrollView.setZoomScale(fullScreanView.scrollView.maximumZoomScale, animated: true)
+        }
+    }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -39,9 +39,13 @@ class ListViewController: UIViewController, UITableViewDelegate {
     
     func createToolBarButton() {
         
+        
+        
         viewTable.toolBar.items = [
             UIBarButtonItem(title: "Gallery", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpGalleryViewController)),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil),
             UIBarButtonItem(title: "List", style: UIBarButtonItemStyle.Plain, target: self, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil),
             UIBarButtonItem(title: "Service", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpServiceViewController))
         ]
     }
@@ -53,7 +57,7 @@ class ListViewController: UIViewController, UITableViewDelegate {
     }
     
     func jumpServiceViewController(){
-        
+
     }
     
     var flag = true

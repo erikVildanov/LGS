@@ -52,7 +52,7 @@ class CollectionDataSource: NSObject ,UICollectionViewDataSource{
             cell.backgroundView = UIImageView(image: image)
             cell.backgroundView!.contentMode = .ScaleAspectFit
         } else {
-            data.url?.fetchImage { img in
+            data.url.fetchImage { img in
                 if cell.imageUrl == data.url {
                     cell.backgroundView = UIImageView(image: img)
                     cell.backgroundView!.contentMode = .ScaleAspectFit
