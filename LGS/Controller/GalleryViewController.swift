@@ -44,7 +44,9 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate {
     }
     
     func jumpServiceViewController(){
-        
+        let tableServiceViewController = TableServiceViewController()
+        tableServiceViewController.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(tableServiceViewController, animated: true, completion: nil)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

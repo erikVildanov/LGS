@@ -39,8 +39,6 @@ class ListViewController: UIViewController, UITableViewDelegate {
     
     func createToolBarButton() {
         
-        
-        
         viewTable.toolBar.items = [
             UIBarButtonItem(title: "Gallery", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(jumpGalleryViewController)),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil),
@@ -57,7 +55,9 @@ class ListViewController: UIViewController, UITableViewDelegate {
     }
     
     func jumpServiceViewController(){
-
+        let tableServiceViewController = TableServiceViewController()
+        tableServiceViewController.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(tableServiceViewController, animated: true, completion: nil)
     }
     
     var flag = true

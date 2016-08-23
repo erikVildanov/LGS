@@ -27,7 +27,13 @@
 		8B3DCFF21D6A2B88006E1240 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DCFF11D6A2B88006E1240 /* TableView.swift */; };
 		8B3DCFF41D6A4CF8006E1240 /* FullScreanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DCFF31D6A4CF8006E1240 /* FullScreanView.swift */; };
 		8B3DCFF81D6A73DD006E1240 /* image.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B3DCFF71D6A73DD006E1240 /* image.plist */; };
-		8B3DD0021D6B7AEF006E1240 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0011D6B7AEF006E1240 /* ServiceViewController.swift */; };
+		8B3DD0021D6B7AEF006E1240 /* TableServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0011D6B7AEF006E1240 /* TableServiceViewController.swift */; };
+		8B3DD0041D6B8AFD006E1240 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0031D6B8AFD006E1240 /* Bash.swift */; };
+		8B3DD0061D6B8C75006E1240 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0051D6B8C75006E1240 /* Quotes.swift */; };
+		8B3DD0081D6B9EB0006E1240 /* FeedJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0071D6B9EB0006E1240 /* FeedJsonParser.swift */; };
+		8B3DD00C1D6BA3D0006E1240 /* ServiceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD00B1D6BA3D0006E1240 /* ServiceTableView.swift */; };
+		8B3DD00E1D6BA403006E1240 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD00D1D6BA403006E1240 /* ServiceTableViewCell.swift */; };
+		8B3DD0111D6BA71C006E1240 /* ServiceTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DD0101D6BA71C006E1240 /* ServiceTableViewDataSource.swift */; };
 		8BCD10D01D67B2180082E7F8 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10CF1D67B2180082E7F8 /* GalleryViewController.swift */; };
 		8BCD10D21D67B28A0082E7F8 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10D11D67B28A0082E7F8 /* GalleryView.swift */; };
 		8BCD10DC1D689BD00082E7F8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD10DB1D689BD00082E7F8 /* Image.swift */; };
@@ -60,7 +66,13 @@
 		8B3DCFF11D6A2B88006E1240 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = View/TableView.swift; sourceTree = "<group>"; };
 		8B3DCFF31D6A4CF8006E1240 /* FullScreanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullScreanView.swift; path = View/FullScreanView.swift; sourceTree = "<group>"; };
 		8B3DCFF71D6A73DD006E1240 /* image.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = image.plist; path = ../image.plist; sourceTree = "<group>"; };
-		8B3DD0011D6B7AEF006E1240 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
+		8B3DD0011D6B7AEF006E1240 /* TableServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableServiceViewController.swift; sourceTree = "<group>"; };
+		8B3DD0031D6B8AFD006E1240 /* Bash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bash.swift; path = Model/Bash.swift; sourceTree = "<group>"; };
+		8B3DD0051D6B8C75006E1240 /* Quotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		8B3DD0071D6B9EB0006E1240 /* FeedJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedJsonParser.swift; sourceTree = "<group>"; };
+		8B3DD00B1D6BA3D0006E1240 /* ServiceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceTableView.swift; path = View/ServiceTableView.swift; sourceTree = "<group>"; };
+		8B3DD00D1D6BA403006E1240 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceTableViewCell.swift; path = View/ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		8B3DD0101D6BA71C006E1240 /* ServiceTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewDataSource.swift; sourceTree = "<group>"; };
 		8BCD10CF1D67B2180082E7F8 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = Controller/GalleryViewController.swift; sourceTree = "<group>"; };
 		8BCD10D11D67B28A0082E7F8 /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryView.swift; path = View/GalleryView.swift; sourceTree = "<group>"; };
 		8BCD10DB1D689BD00082E7F8 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -106,6 +118,7 @@
 				8B1426FF1D66172C002D3CEB /* DataSource */,
 				8B1426D61D6613CF002D3CEB /* AppDelegate.swift */,
 				8BCD10E71D69146A0082E7F8 /* ImageCache.swift */,
+				8B3DD0071D6B9EB0006E1240 /* FeedJsonParser.swift */,
 				8B1426DA1D6613CF002D3CEB /* Main.storyboard */,
 				8B1426E01D6613CF002D3CEB /* Assets.xcassets */,
 				8B1426E21D6613CF002D3CEB /* LaunchScreen.storyboard */,
@@ -119,6 +132,7 @@
 		8B1426FB1D66164E002D3CEB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B3DD0091D6B9F63006E1240 /* Service */,
 				8B3DCFFB1D6A7B60006E1240 /* List */,
 				8B3DCFFC1D6A7B79006E1240 /* Gallery */,
 			);
@@ -128,6 +142,7 @@
 		8B1426FD1D66171E002D3CEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B3DD00A1D6BA379006E1240 /* Service */,
 				8B3DCFFA1D6A7B42006E1240 /* LIst */,
 				8B3DCFFD1D6A7B86006E1240 /* Gallery */,
 			);
@@ -137,9 +152,9 @@
 		8B1426FE1D661722002D3CEB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8B3DD00F1D6BA69E006E1240 /* Service */,
 				8B3DCFF91D6A7B32006E1240 /* List */,
 				8B3DCFFE1D6A7B94006E1240 /* Gallery */,
-				8B3DD0011D6B7AEF006E1240 /* ServiceViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -150,6 +165,7 @@
 				8B1EF4DC1D67AA0400D918B9 /* TableDataSource.swift */,
 				8B1EF4C81D6744FB00D918B9 /* CorporateService.swift */,
 				8BCD10DF1D689D9C0082E7F8 /* CollectionDataSource.swift */,
+				8B3DD0101D6BA71C006E1240 /* ServiceTableViewDataSource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -211,6 +227,32 @@
 				8B3DCFEF1D69C50A006E1240 /* PageViewController.swift */,
 			);
 			name = Gallery;
+			sourceTree = "<group>";
+		};
+		8B3DD0091D6B9F63006E1240 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B3DD0031D6B8AFD006E1240 /* Bash.swift */,
+				8B3DD0051D6B8C75006E1240 /* Quotes.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		8B3DD00A1D6BA379006E1240 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B3DD00B1D6BA3D0006E1240 /* ServiceTableView.swift */,
+				8B3DD00D1D6BA403006E1240 /* ServiceTableViewCell.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		8B3DD00F1D6BA69E006E1240 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B3DD0011D6B7AEF006E1240 /* TableServiceViewController.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3DD0041D6B8AFD006E1240 /* Bash.swift in Sources */,
 				8B1427011D661786002D3CEB /* TableViewCell.swift in Sources */,
 				8BCD10D01D67B2180082E7F8 /* GalleryViewController.swift in Sources */,
+				8B3DD0081D6B9EB0006E1240 /* FeedJsonParser.swift in Sources */,
 				8B1EF4D41D67A78500D918B9 /* Corporate.swift in Sources */,
 				8B1EF4D21D67A78500D918B9 /* Leadership.swift in Sources */,
 				8B3DCFF41D6A4CF8006E1240 /* FullScreanView.swift in Sources */,
@@ -296,13 +340,17 @@
 				8B1EF4D31D67A78500D918B9 /* Bookkeeping.swift in Sources */,
 				8B1EF4DA1D67A7A500D918B9 /* ListViewController.swift in Sources */,
 				8BCD10E61D68C3E70082E7F8 /* FullScreanViewConrtoller.swift in Sources */,
+				8B3DD0111D6BA71C006E1240 /* ServiceTableViewDataSource.swift in Sources */,
 				8B3DCFF21D6A2B88006E1240 /* TableView.swift in Sources */,
+				8B3DD00C1D6BA3D0006E1240 /* ServiceTableView.swift in Sources */,
 				8BCD10E81D69146A0082E7F8 /* ImageCache.swift in Sources */,
 				8BCD10EA1D691A470082E7F8 /* CollectionViewCell.swift in Sources */,
+				8B3DD00E1D6BA403006E1240 /* ServiceTableViewCell.swift in Sources */,
 				8B1EF4DD1D67AA0400D918B9 /* TableDataSource.swift in Sources */,
-				8B3DD0021D6B7AEF006E1240 /* ServiceViewController.swift in Sources */,
+				8B3DD0021D6B7AEF006E1240 /* TableServiceViewController.swift in Sources */,
 				8BCD10DC1D689BD00082E7F8 /* Image.swift in Sources */,
 				8B1427051D66198D002D3CEB /* AddDataViewController.swift in Sources */,
+				8B3DD0061D6B8C75006E1240 /* Quotes.swift in Sources */,
 				8B1426DF1D6613CF002D3CEB /* LGS.xcdatamodeld in Sources */,
 				8B3DCFF01D69C50A006E1240 /* PageViewController.swift in Sources */,
 				8B1EF4D71D67A79300D918B9 /* AddEditView.swift in Sources */,
