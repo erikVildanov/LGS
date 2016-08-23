@@ -42,7 +42,7 @@ class AddDataViewController: UIViewController {
     
      func saveData() {
         
-        checkLable(addEditView.segmentedControl.selectedSegmentIndex)
+        if checkLable(addEditView.segmentedControl.selectedSegmentIndex) {
         
         let corporateService = CorporateService(context: context)
         
@@ -68,6 +68,7 @@ class AddDataViewController: UIViewController {
         corporateService.saveChanges()
         
         defultLable()
+        }
     }
 
     private func defultLable(){
@@ -79,21 +80,25 @@ class AddDataViewController: UIViewController {
         addEditView.bookkeepingType.selectedSegmentIndex = 0
     }
 
-    func checkLable(section: Int){
+    func checkLable(section: Int) -> Bool {
         switch section {
         case 0:
-            if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.businessHours.text == "" {
+            if addEditView.fullName.text == "" || addEditView.salary.text == "" || addEditView.businessHours.text == "" {
                 let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
-                return
+                return false
+            } else {
+                return true
             }
         default:
-            if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.lunchTime.text == "" && addEditView.seatNumber.text == "" {
+            if addEditView.fullName.text == "" || addEditView.salary.text == "" || addEditView.lunchTime.text == "" || addEditView.seatNumber.text == "" {
                 let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
-                return
+                return false
+            } else {
+                return true
             }
         }
     }

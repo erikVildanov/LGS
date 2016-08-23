@@ -20,18 +20,15 @@ class TableServiceViewController: UIViewController {
         createToolBarButton()
         view = serviceTableView
         serviceTableView.tableView.registerClass(ServiceTableViewCell.self, forCellReuseIdentifier: "ServiceCell")
-
+        
         loadJson{
             self.serviceTableView.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
         }
-        
         serviceTableView.tableView.dataSource = serviceDataSource
-        
     }
     
     func loadJson(completion: (Void -> Void)?){
         let feedJsonParser = FeedJsonParser()
-        
         feedJsonParser.parseFeed("http://quotes.zennex.ru/api/v3/bash/quotes?sort=time", completionHandler:
             {
                 (json: Quotes) -> Void in
@@ -40,13 +37,12 @@ class TableServiceViewController: UIViewController {
                         completion?()
                 })
         })
+        
     }
     
     func refreshTable(){
         refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: UIControlEvents.ValueChanged)
         serviceTableView.tableView.addSubview(refreshControl)
-        
-        
     }
 
     func refresh() {

@@ -79,8 +79,8 @@ class EditDataViewController: UIViewController {
     
     func updateData(){
         
+        if  checkLable(section) {
         let corporateService = CorporateService(context: context)
-        
         switch addEditView.segmentedControl.selectedSegmentIndex {
         case 1:
             updateCoWorker(corporateService)
@@ -89,8 +89,8 @@ class EditDataViewController: UIViewController {
         default:
             updateLeadership(corporateService)
         }
-        
         corporateService.saveChanges()
+        }
     }
     
     func backListViewControllet(){
@@ -100,7 +100,6 @@ class EditDataViewController: UIViewController {
 
     func updateLeadership(corporateService: CorporateService){
         var readLeadership : [Leadership] = corporateService.getAllLeadership()
-        
         if section == 0 {
             if let updateLeadership = corporateService.getByIdLeadership(readLeadership[index].objectID) {
                 updateLeadership.fullName = addEditView.fullName.text
@@ -117,7 +116,6 @@ class EditDataViewController: UIViewController {
     
     func updateBookkeeping(corporateService: CorporateService){
         var readBookkeeping : [Bookkeeping] = corporateService.getAllBookkeeping()
-        
         if section == 2 {
             if let updateBookkeeping = corporateService.getByIdBookkeeping(readBookkeeping[index].objectID) {
                 updateBookkeeping.fullName = addEditView.fullName.text
@@ -135,7 +133,6 @@ class EditDataViewController: UIViewController {
     
     func updateCoWorker(corporateService: CorporateService){
         var readCoWorker : [CoWorker] = corporateService.getAllCoWorker()
-        
         if section == 1 {
             if let updateCoWorker = corporateService.getByIdCoWorker(readCoWorker[index].objectID) {
                 updateCoWorker.fullName = addEditView.fullName.text
@@ -151,13 +148,8 @@ class EditDataViewController: UIViewController {
         }
     }
     
-    
     func crateData(section: Int){
-        
-        checkLable(section)
-        
         let corporateService = CorporateService(context: context)
-        
         switch section {
         case 1:
             corporateService.createNewCoWorker(addEditView.fullName.text!, salary: atof(addEditView.salary.text!), lunchTime: addEditView.lunchTime.text!, seatNumber: atof(addEditView.seatNumber.text!))
@@ -170,9 +162,7 @@ class EditDataViewController: UIViewController {
     }
     
     func deleteData(section: Int){
-        
         let corporateService = CorporateService(context: context)
-        
         switch section {
         case 1:
             var readCoWorker : [CoWorker] = corporateService.getAllCoWorker()
@@ -194,64 +184,26 @@ class EditDataViewController: UIViewController {
 
     }
     
-    func checkLable(section: Int){
+    func checkLable(section: Int) -> Bool {
         switch section {
         case 0:
-        if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.businessHours.text == "" {
+        if addEditView.fullName.text == "" || addEditView.salary.text == "" || addEditView.businessHours.text == "" {
             let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
-            return
-        }
+            return false
+        } else {
+            return true
+            }
         default:
-            if addEditView.fullName.text == "" && addEditView.salary.text == "" && addEditView.lunchTime.text == "" && addEditView.seatNumber.text == "" {
+            if addEditView.fullName.text == "" || addEditView.salary.text == "" || addEditView.lunchTime.text == "" || addEditView.seatNumber.text == "" {
                 let alertController = UIAlertController(title: "Ooops", message: "Не все поля заполнены", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
-                return
+                return false
+            } else {
+            return true
             }
         }
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

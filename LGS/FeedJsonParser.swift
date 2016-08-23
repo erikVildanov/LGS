@@ -51,8 +51,7 @@ class FeedJsonParser {
                     self.quotes.id.append(id)
                 }
                 if let description = quotes["description"] as? String {
-                    let str = self.replaceMatches("<br>", inString: description, withString: "\\n")
-                    self.quotes.description.append(str!)
+                    self.quotes.description.append(description.decodeEnt())
                 }
                 if let time = quotes["time"] as? String {
                     self.quotes.time.append(time)
@@ -66,12 +65,17 @@ class FeedJsonParser {
         parserCompletionHandler?(quotes)
     }
     
-    
-    func replaceMatches(pattern: String, inString string: String, withString replacementString: String) -> String? {
-        let regex = try! NSRegularExpression(pattern: pattern, options: .AllowCommentsAndWhitespace)
-        let range = NSMakeRange(0, string.characters.count)
+}
+
+extension String{
+    func decodeEnt() -> String{
+        let encodedData = self.dataUsingEncoding(NSUTF8StringEncoding)!
+        let attributedOptions : [String: AnyObject] = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+        ]
+        let attributedString = try! NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
         
-        return regex.stringByReplacingMatchesInString(string, options: .ReportCompletion, range: range, withTemplate: replacementString)
+        return attributedString.string
     }
-    
 }

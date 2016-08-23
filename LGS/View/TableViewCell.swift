@@ -16,7 +16,6 @@ class TableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
-        iconImage.clipsToBounds = true
         iconImage.translatesAutoresizingMaskIntoConstraints = false
         information.translatesAutoresizingMaskIntoConstraints = false
         iconImage.contentMode = .ScaleAspectFit

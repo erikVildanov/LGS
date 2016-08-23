@@ -21,7 +21,11 @@ class ServiceTableViewDataSource: NSObject ,UITableViewDataSource {
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("ServiceCell", forIndexPath: indexPath) as! ServiceTableViewCell
         
-        cell.information.text = "\(quotes.id[indexPath.row])\n\(quotes.time[indexPath.row])\n\(quotes.rating[indexPath.row])\n\(quotes.description[indexPath.row])"
+        cell.message.text = quotes.description[indexPath.row]
+        cell.dateLbl.text = quotes.time[indexPath.row]
+        cell.idLbl.text = "\(quotes.id[indexPath.row])"
+        cell.ratingLbl.text = "Rating: \(quotes.rating[indexPath.row])"
+        
         return cell
     }
 }

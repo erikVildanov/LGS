@@ -30,6 +30,9 @@ class ServiceTableView: UIView {
     }
     
     func initializeView(){
+        
+        let navItem = UINavigationItem(title: "Service")
+        navigationBar.setItems([navItem], animated: false)
         addSubview(tableView)
         addSubview(navigationBar)
         addSubview(toolBar)
