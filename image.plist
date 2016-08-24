@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   image.plist
-   LGS
-
-   Created by Эрик Вильданов on 22.08.16.
-   Copyright (c) 2016 ErikVildanov. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
 	<dict>
@@ -128,6 +121,50 @@
 	<dict>
 		<key>url</key>
 		<string>https://pp.vk.me/c628320/v628320704/273b7/4owIh4_uUYY.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c604321/v604321794/21120/NIKjOFvksS8.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c636127/v636127371/1bed0/Xmwo1xuewnM.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c622116/v622116780/1c825/I4YIIRaY7j0.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c635102/v635102085/412d/zykm_p5sjhA.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c7011/v7011230/35e54/dwVT27P0x8s.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c635100/v635100167/c49b/yx04qr_kTYo.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c630216/v630216248/304b4/0waFEMwb96Y.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c543104/v543104167/147ee/FDjT32DlGkw.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://scontent.cdninstagram.com/t51.2885-15/e35/13643119_931099527016098_190016092_n.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c629429/v629429409/32db3/CGa3fGwUtz8.jpg</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>https://pp.vk.me/c619519/v619519151/84f8/D1B8tWIZffE.jpg</string>
 	</dict>
 </array>
 </plist>

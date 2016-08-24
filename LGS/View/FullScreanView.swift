@@ -34,7 +34,7 @@ class FullScreanView: UIView {
         let width = UIScreen.mainScreen().bounds.size.width
         let height = UIScreen.mainScreen().bounds.size.height
         
-        scrollView.frame = CGRectMake(0, 0, width, height-60)
+        scrollView.frame = CGRectMake(0, 0, width, height-64)
         
         let viewsDict = [
             "scrollView" : scrollView,
@@ -42,7 +42,7 @@ class FullScreanView: UIView {
         ]
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[scrollView]|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[scrollView]|", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-60-[scrollView]|", options: [], metrics: nil, views: viewsDict))
         
         scrollView.addSubview(imageView)
     

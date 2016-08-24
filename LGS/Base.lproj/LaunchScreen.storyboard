@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +17,29 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 Эрик Вильданов. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Eh2-eL-5AH">
+                                <rect key="frame" x="30" y="559" width="540" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aem-rV-751">
+                                <rect key="frame" x="200" y="257" width="200" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="CXI-ez-Ah3"/>
+                                    <constraint firstAttribute="height" constant="85" id="g1Y-De-SZM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.0039215686269999999" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="aem-rV-751" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1X8-KX-7CR"/>
+                            <constraint firstItem="Eh2-eL-5AH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="J71-Xq-qmX"/>
+                            <constraint firstItem="aem-rV-751" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="p02-NS-anC"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Eh2-eL-5AH" secondAttribute="bottom" constant="20" id="pdX-GC-DTK"/>
+                            <constraint firstItem="Eh2-eL-5AH" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="10" id="uFU-6S-tjs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +47,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="200" height="85"/>
+    </resources>
 </document>
