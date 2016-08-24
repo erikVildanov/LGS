@@ -18,6 +18,7 @@ class AddEditView: UIView {
     var lunchTime = UITextField()
     var bookkeepingType = UISegmentedControl()
     let navigationBar = UINavigationBar()
+    let statusBar = UIView()
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -47,9 +48,21 @@ class AddEditView: UIView {
     
     func initializeNavigationBar(){
         addSubview(navigationBar)
-        let viewsDict = ["navigationBar" : navigationBar]
+        addSubview(statusBar)
+        statusBar.backgroundColor = UIColor.blackColor()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        let viewsDict = ["navigationBar" : navigationBar, "statusBar": statusBar]
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        statusBar.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[navigationBar]|", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[statusBar]|", options: [], metrics: nil, views: viewsDict))
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceDidRotate(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func deviceDidRotate(notification: NSNotification)
+    {
+        UIApplication.sharedApplication().statusBarHidden = false
     }
     
     private func initializeSegmentedControll(){
@@ -62,9 +75,9 @@ class AddEditView: UIView {
         segmentedControl.tintColor = UIColor.yellowColor()
         segmentedControl.addTarget(self, action: #selector(AddEditView.changeEmployees(_:)), forControlEvents: .ValueChanged)
         addSubview(segmentedControl)
-        let viewsDict = ["segmentedControl" : segmentedControl, "navigationBar" : navigationBar]
+        let viewsDict = ["segmentedControl" : segmentedControl, "navigationBar" : navigationBar, "statusBar": statusBar]
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[segmentedControl]-10-|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)]-5-[segmentedControl(60)]", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[statusBar(20)][navigationBar(44)]-5-[segmentedControl(60)]", options: [], metrics: nil, views: viewsDict))
     }
     
     private func initializeCorporateViews(){

@@ -124,7 +124,7 @@ class TableDataSource: NSObject ,UITableViewDataSource {
         default:
             return
         }
-        
+        tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Automatic)
         tableView.reloadData()
     }
     

@@ -5,8 +5,8 @@
 //  Created by Эрик Вильданов on 20.08.16.
 //  Copyright © 2016 ErikVildanov. All rights reserved.
 //
-
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 
 class FullScreanViewController: UIViewController, UIScrollViewDelegate {
@@ -80,10 +80,18 @@ class FullScreanViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupGestureRecognizer() {
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceDidRotate(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
         fullScreanView.imageView.userInteractionEnabled = true
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
         doubleTap.numberOfTapsRequired = 2
         fullScreanView.imageView.addGestureRecognizer(doubleTap)
+    }
+    
+    func deviceDidRotate(notification: NSNotification)
+    {
+        centerScrollViewContents()
+        
     }
     
     func handleDoubleTap() {

@@ -12,6 +12,7 @@ class PageViewController: UIPageViewController {
     var photos: [Image] = []
     var currentIndex: Int!
     let navigationBar = UINavigationBar()
+    let statusBar = UIView()
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : AnyObject]?) {
         super.init(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: options)
@@ -32,23 +33,50 @@ class PageViewController: UIPageViewController {
             let viewControllers = [viewController]
             setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
         }
+        
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deviceDidRotate(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
     }
     
     func createBarButton() {
+        addBlurEffect()
+        view.addSubview(statusBar)
         view.addSubview(navigationBar)
+        
+        let viewsDict = [
+            "navigationBar" : navigationBar,
+            "statusBar" : statusBar
+        ]
+        
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[navigationBar]|", options: [], metrics: nil, views: ["navigationBar": navigationBar]))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[navigationBar(60)]", options: [], metrics: nil, views: ["navigationBar": navigationBar]))
+        statusBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[statusBar]|", options: [], metrics: nil, views: viewsDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[navigationBar]|", options: [], metrics: nil, views: viewsDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[statusBar(20)][navigationBar(44)]", options: [], metrics: nil, views: viewsDict))
         
         let navItem = UINavigationItem()
-        
         let leftButton = UIBarButtonItem(image: UIImage(named: "Left"), style: .Plain, target: self, action: #selector(goLeftImage))
         let fightButton = UIBarButtonItem(image: UIImage(named: "Right"), style: .Plain, target: self, action: #selector(goRightImage))
-        navItem.rightBarButtonItems = [fightButton, leftButton]
-        
+            navItem.rightBarButtonItems = [fightButton, leftButton]
         let backButton = UIBarButtonItem(title: "< Back", style: .Plain, target: self, action: #selector(backGalleryViewController))
-        navItem.leftBarButtonItem = backButton
-        navigationBar.setItems([navItem], animated: false)
+            navItem.leftBarButtonItem = backButton
+            navigationBar.setItems([navItem], animated: false)
+        
+        
+        
+        
+    }
+    
+    func addBlurEffect() {
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.translucent = true
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+        visualEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        navigationBar.addSubview(visualEffectView)
+        
+        // Here you can add visual effects to any UIView control.
+        // Replace custom view with navigation bar in above code to add effects to custom view.
     }
     
     func backGalleryViewController(){
@@ -70,6 +98,11 @@ class PageViewController: UIPageViewController {
         }
     }
     
+    func deviceDidRotate(notification: NSNotification)
+    {
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
     func viewFullScreanViewController(index: Int) -> FullScreanViewController? {
         
         if index >= 0 && index < photos.count {
@@ -88,9 +121,7 @@ class PageViewController: UIPageViewController {
         }
             return fullScreanViewController
         }
-
         return nil
-        
     }
 }
 

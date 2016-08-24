@@ -20,9 +20,10 @@ class TableServiceViewController: UIViewController {
         createToolBarButton()
         view = serviceTableView
         serviceTableView.tableView.registerClass(ServiceTableViewCell.self, forCellReuseIdentifier: "ServiceCell")
-        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         loadJson{
             self.serviceTableView.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
         serviceTableView.tableView.dataSource = serviceDataSource
     }

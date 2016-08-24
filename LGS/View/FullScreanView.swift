@@ -29,6 +29,7 @@ class FullScreanView: UIView {
     }
     
     func initializeView(){
+        
         addSubview(scrollView)
         let width = UIScreen.mainScreen().bounds.size.width
         let height = UIScreen.mainScreen().bounds.size.height
@@ -39,13 +40,12 @@ class FullScreanView: UIView {
             "scrollView" : scrollView,
             "toolBar" : imageView
         ]
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[scrollView]|", options: [], metrics: nil, views: viewsDict))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-60-[scrollView]|", options: [], metrics: nil, views: viewsDict))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[scrollView]|", options: [], metrics: nil, views: viewsDict))
         
         scrollView.addSubview(imageView)
-        
+    
     }
     
 }
